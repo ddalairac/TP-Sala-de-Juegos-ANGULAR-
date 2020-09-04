@@ -9,8 +9,6 @@ import { LoginComponent } from './componentes/login/login.component';
 import { HttpModule } from '@angular/http';
 
 // import { AccordionModule } from 'ngx-bootstrap';
-// agrego las clases para utilizar ruteo
-import { RouterModule, Routes } from '@angular/router';
 
 import { MiHttpService } from './servicios/mi-http/mi-http.service'; 
 import { PaisesService } from './servicios/paises.service'; 
@@ -23,7 +21,7 @@ import { AgilidadAritmeticaComponent } from './componentes/agilidad-aritmetica/a
 import { MenuComponent } from './componentes/menu/menu.component';
 import { AdivinaMasListadoComponent } from './componentes/adivina-mas-listado/adivina-mas-listado.component';
 import { AgilidadMasListadoComponent } from './componentes/agilidad-mas-listado/agilidad-mas-listado.component';
-import { RuteandoModule } from './ruteando/ruteando.module';
+import { RuteandoModule } from './app-routing.module';
 import { ListadoComponent } from './componentes/listado/listado.component';
 // declaro donde quiero que se dirija
 /*
@@ -88,9 +86,6 @@ import { SexoPipe } from './pipes/sexo.pipe';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB6f8x4IjRlesQ3oETc6BXYQHVRTOlY3Ys'
     })
-    // NgbModule.forRoot(MiRuteo),
-    // importo el ruteo
-    // RouterModule.forRoot(MiRuteo)
   ],
   providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService],
   bootstrap: [AppComponent]
