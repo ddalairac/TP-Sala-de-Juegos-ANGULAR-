@@ -29,12 +29,13 @@ h4,
 h5,
 h6 {
   font-weight: 300;
-  color: $textColor; //map-get($byma-primary, 500);
+  color: $textColor; 
+  font-family: 'Comfortaa', cursive;
 }
 
 h1,
 h2{
-    // color: $primary; //map-get($byma-primary, 500);
+    color: $primary;
 }
 h1 {
 //   font-size: 26px;
@@ -64,7 +65,9 @@ h5,h4 {
 h3,h4,h5,h6{
     margin: 3px 0;
 }
-
+a{
+    color:$tertiary!important;
+}
 
 
 p,
