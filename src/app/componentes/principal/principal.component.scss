@@ -1,4 +1,4 @@
-@import "src/assets/scss/variables";// .imagenDeMenu{
+@import "src/assets/scss/variables"; // .imagenDeMenu{
 // width: 80px;
 // height: 70px;
 // }
@@ -12,12 +12,22 @@
 //     color: #100000;
 //     }
 
-img{
+img {
     width: 100px;
     border-radius: 5px;
     margin-right: 15px;
-    box-shadow: $neon-primary
 }
-h2{
-    color:$secondary;
+h2 {
+    color: $secondary;
+}
+h4{
+    color: $tertiary;
+}
+p {
+    color: white;
+}
+a {
+    &:hover {
+        text-decoration: none !important;
+    }
 }
