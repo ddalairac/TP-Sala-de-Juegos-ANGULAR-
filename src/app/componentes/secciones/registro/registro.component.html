@@ -7,8 +7,8 @@
    
   </div>
   <strong><p>No leer lo anterior, es solo un ejemplo sacado de https://www.argentina.gob.ar/terminos-y-condiciones </p></strong>
-  <button onclick="document.getElementById('id01').style.display='block'" >Acepto</button>
-  <button  class="cancelbtn"  routerLink="/Principal" >No acepto</button>
+  <button mat-raised-button color="secondary" onclick="document.getElementById('id01').style.display='block'" >Acepto</button>
+  <button mat-raised-button color="secondary" routerLink="/Principal" >No acepto</button>
   <div id="id01" class="modal">
     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
     <form class="modal-content animate" >
@@ -25,8 +25,8 @@
         <p>creando la cuenta aceptando los<a  onclick="document.getElementById('id01').style.display='none'"  >Terminos y condiciones</a>.</p>
   
         <div class="clearfix">
-          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Me arrepenti</button>
-          <button type="submit" class="signupbtn">Registrarme</button>
+          <button mat-raised-button color="secondary" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Me arrepenti</button>
+          <button mat-raised-button color="secondary" type="submit" class="signupbtn">Registrarme</button>
         </div>
       </div>
     </form>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { JuegoServiceService } from '../../servicios/juego-service.service';
+import { JuegoServiceService } from '../../../servicios/juego-service.service';
 
 @Component({
   selector: 'app-listado',

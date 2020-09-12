@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
-import { JugadoresListadoComponent } from './componentes/jugadores-listado/jugadores-listado.component';
-import { LoginComponent } from './componentes/login/login.component';
-import { MapaDeGoogleComponent } from './componentes/mapa-de-google/mapa-de-google.component';
-import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component';
-import { RegistroComponent } from './componentes/registro/registro.component';
-import { PrincipalComponent } from './componentes/principal/principal.component';
-import { ListadoComponent } from './componentes/listado/listado.component';
-import { ListadoDePaisesComponent } from './componentes/listado-de-paises/listado-de-paises.component';
-import { JuegosComponent } from './componentes/juegos/juegos.component';
-import { MenuCardComponent } from './componentes/menu-card/menu-card.component';
-import { AdivinaElNumeroComponent } from './componentes/adivina-el-numero/adivina-el-numero.component';
-import { AdivinaMasListadoComponent } from './componentes/adivina-mas-listado/adivina-mas-listado.component';
-import { AgilidadMasListadoComponent } from './componentes/agilidad-mas-listado/agilidad-mas-listado.component';
-import { AgilidadAritmeticaComponent } from './componentes/agilidad-aritmetica/agilidad-aritmetica.component';
-import { ErrorComponent } from './componentes/error/error.component';
 import { RouterModule } from '@angular/router';
+import { AdivinaElNumeroComponent } from './componentes/juegos/adivina-el-numero/adivina-el-numero.component';
+import { AdivinaMasListadoComponent } from './componentes/juegos/adivina-mas-listado/adivina-mas-listado.component';
+import { AgilidadAritmeticaComponent } from './componentes/juegos/agilidad-aritmetica/agilidad-aritmetica.component';
+import { AgilidadMasListadoComponent } from './componentes/juegos/agilidad-mas-listado/agilidad-mas-listado.component';
+import { ErrorComponent } from './componentes/secciones/error/error.component';
+import { JuegosComponent } from './componentes/secciones/juegos/juegos.component';
+import { JugadoresListadoComponent } from './componentes/secciones/jugadores-listado/jugadores-listado.component';
+import { ListadoDePaisesComponent } from './componentes/secciones/listado-de-paises/listado-de-paises.component';
+import { ListadoComponent } from './componentes/secciones/listado/listado.component';
+import { LoginComponent } from './componentes/secciones/login/login.component';
+import { MapaDeGoogleComponent } from './componentes/secciones/mapa-de-google/mapa-de-google.component';
+import { MenuCardComponent } from './componentes/secciones/menu-card/menu-card.component';
+import { PrincipalComponent } from './componentes/secciones/principal/principal.component';
+import { QuienSoyComponent } from './componentes/secciones/quien-soy/quien-soy.component';
+import { RegistroComponent } from './componentes/secciones/registro/registro.component';
 
 // declaro donde quiero que se dirija
 const MiRuteo = [

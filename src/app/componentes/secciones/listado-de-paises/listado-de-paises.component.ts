@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PaisesService } from '../../servicios/paises.service';
+import { PaisesService } from '../../../servicios/paises.service';
 
 @Component({
   selector: 'app-listado-de-paises',
