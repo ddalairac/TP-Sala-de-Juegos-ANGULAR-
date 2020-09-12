@@ -7,7 +7,8 @@ body {
     height: 100%;
     max-width: 100vw;
     overflow-x: hidden;
-    background-image: linear-gradient(310deg, $bg-color, black);
+    // background-image: linear-gradient(310deg, $bg-color, black);
+    background: black!important;
 }
 *{
     box-sizing: border-box;

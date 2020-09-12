@@ -1,17 +1,15 @@
 @import "src/assets/scss/variables";
-
+.logo{
+    width: 187px;
+    height: 142px;
+}
 .panel {
-    height: 200px;
-    // background: black;
-    background-image: url("https://www.aoos.com/media/catalog/product/cache/d3537c321a700cb9c1fb7a409c881eeb/a/r/arcade_game_room_neon_sign_l147.jpg");
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: contain;
+    min-height:150px;
     position: relative;
-    padding: 30px 30px 30px 190px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;    
+    justify-content: space-between;   
+    align-items: center; 
 }
 h1{
     width: 100%;
@@ -25,7 +23,7 @@ a{
 }
 
 .hero-text {
-    
+    flex-grow: 1;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;

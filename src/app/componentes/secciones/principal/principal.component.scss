@@ -11,7 +11,13 @@
 //     transform: translate(-50%, -50%);
 //     color: #100000;
 //     }
-
+.header{
+    background-image: url(/assets/imagenes/new/main-header.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;;
+}
 img {
     width: 100px;
     border-radius: 5px;
