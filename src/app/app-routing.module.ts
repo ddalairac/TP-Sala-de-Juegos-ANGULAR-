@@ -4,6 +4,8 @@ import { AdivinaElNumeroComponent } from './componentes/juegos/adivina-el-numero
 import { AdivinaMasListadoComponent } from './componentes/juegos/adivina-mas-listado/adivina-mas-listado.component';
 import { AgilidadAritmeticaComponent } from './componentes/juegos/agilidad-aritmetica/agilidad-aritmetica.component';
 import { AgilidadMasListadoComponent } from './componentes/juegos/agilidad-mas-listado/agilidad-mas-listado.component';
+import { PptComponent } from './componentes/juegos/ppt/ppt.component';
+import { SnakeComponent } from './componentes/juegos/snake/snake.component';
 import { ErrorComponent } from './componentes/secciones/error/error.component';
 import { JuegosComponent } from './componentes/secciones/juegos/juegos.component';
 import { JugadoresListadoComponent } from './componentes/secciones/jugadores-listado/jugadores-listado.component';
@@ -31,7 +33,9 @@ const MiRuteo = [
             { path: 'Adivina', component: AdivinaElNumeroComponent },
             { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
             { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
-            { path: 'Agilidad', component: AgilidadAritmeticaComponent }
+            { path: 'Agilidad', component: AgilidadAritmeticaComponent },
+            { path: 'Snake', component: SnakeComponent },
+            { path: 'PPT', component: PptComponent },
         ]
     },
     { path: 'error', component: ErrorComponent },

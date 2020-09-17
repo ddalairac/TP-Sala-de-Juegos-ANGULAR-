@@ -1,0 +1,27 @@
+<input class="input-keypress" (keydown)="onKeydown($event)" autofocus />
+
+<div class="container" [ngStyle]="{ width: stageWidth + 'px' }">
+  <h1>Snake</h1>
+</div>
+<div class="stage" [ngStyle]="{ width: stageWidth + 'px' }">
+  <div class="row" *ngFor="let h of stageSlots[0]; let hIndex = index">
+    <app-stage-slot
+      *ngFor="let w of stageSlots[1]; let wIndex = index"
+      class="col"
+      [module]="module"
+    ></app-stage-slot>
+  </div>
+
+  <app-body-link
+    *ngFor="let link of snakeLinks; let index = index"
+    [module]="module"
+    [link]="link"
+    [index]="index"
+  ></app-body-link>
+
+  <app-apple
+    *ngFor="let apple of apples"
+    [module]="module"
+    [apple]="apple"
+  ></app-apple>
+</div>

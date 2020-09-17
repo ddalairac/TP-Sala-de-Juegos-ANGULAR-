@@ -44,6 +44,20 @@ import { SexoPipe } from './pipes/sexo.pipe';
 import { MaterialModule } from './vendors/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// import { config } from 'process';
+// import { AngularFireModule } from '@angular/fire/firebase.app.module';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+import { AppleComponent } from './componentes/juegos/snake/components/apple/apple.component';
+import { BodyLinkComponent } from './componentes/juegos/snake/components/body-link/body-link.component';
+import { StageSlotComponent } from './componentes/juegos/snake/components/stage-slot/stage-slot.component';
+import { StageComponent } from './componentes/juegos/snake/components/stage/stage.component';
+import { SnakeComponent } from './componentes/juegos/snake/snake.component';
+import { PptComponent } from './componentes/juegos/ppt/ppt.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +82,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MapaDeGoogleComponent,
     JugadoresListadoComponent,
     InputJugadoresComponent,
-    SexoPipe
+    SexoPipe,
+    SnakeComponent,    
+    BodyLinkComponent,
+    StageComponent,
+    StageSlotComponent,
+    AppleComponent,
+    PptComponent
   ],
   imports: [
     BrowserModule,
@@ -78,8 +98,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB6f8x4IjRlesQ3oETc6BXYQHVRTOlY3Ys'
     }),
+    BrowserAnimationsModule,
     MaterialModule,
-    BrowserAnimationsModule
+    // AngularFireModule.initializeApp(config),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule // storage
   ],
   providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService],
   bootstrap: [AppComponent]

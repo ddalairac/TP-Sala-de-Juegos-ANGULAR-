@@ -2,6 +2,8 @@
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 @import "bootstrap-custom";
 @import "material-custom";
+@import "games";
+@import "snake";
 html,
 body {
     height: 100%;
@@ -9,6 +11,7 @@ body {
     overflow-x: hidden;
     background: black!important;
     background-image: linear-gradient(310deg, $bg-color, black);
+    color: white;
 }
 *{
     box-sizing: border-box;

@@ -1,22 +1,50 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AuthService, iAuthError } from '../../../servicios/auth.service';
 //para poder hacer las validaciones
 //import { Validators, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.scss']
+    selector: 'app-registro',
+    templateUrl: './registro.component.html',
+    styleUrls: ['./registro.component.scss']
 })
 export class RegistroComponent implements OnInit {
 
- /* constructor( private miConstructor:FormBuilder) { }
-  email=new FormControl('',[Validators.email]);
-  formRegistro:FormGroup=this.miConstructor.group({
-    usuario:this.email
-  });*/
-  constructor( ) { }
+    /* constructor( private miConstructor:FormBuilder) { }
+     email=new FormControl('',[Validators.email]);
+     formRegistro:FormGroup=this.miConstructor.group({
+       usuario:this.email
+     });*/
+    constructor(private authService: AuthService) { }
+    showRegistro: boolean;
+    usuario:string;
+    clave:string;
+    clave2:string;
 
-  ngOnInit() {
-  }
+    invalidUsuario:boolean
+    invalidClave:boolean
+    errorMensaje:string
+
+    ngOnInit() {
+    }
+    onHideRegistro() {
+        this.showRegistro = false;
+    }
+    onShowRegistro() {
+        this.showRegistro = true;
+    }
+    onRegistrar(){
+        this.authService.register(this.usuario,this.clave).then(
+            res=>{
+                console.log("Registro:",res)
+            },
+            (error:iAuthError)=>{
+                console.log("Error Registro:",error)
+                this.errorMensaje = error.message
+            }
+        )
+    }
 
 }
+
+

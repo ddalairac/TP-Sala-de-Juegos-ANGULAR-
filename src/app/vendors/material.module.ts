@@ -1,6 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 // import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
@@ -19,7 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
         // MatExpansionModule,
         // MatGridListModule,
         // MatIconModule,
-        // MatInputModule,
+        MatInputModule,
         // MatListModule,
         // MatMenuModule,
         // MatNativeDateModule,
