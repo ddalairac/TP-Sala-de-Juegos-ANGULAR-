@@ -31,7 +31,7 @@ export class AgilidadAritmeticaComponent implements OnInit {
         console.info("Inicio agilidad");
     }
 
-    NuevoJuego() {
+    onNuevoJuego() {
         this.inicializarOperadoresYOperandos(); //Genero 2 numeros y operando random
         this.realizarOperacionAritmeticaSecreta(); //hago la operacion aritmetica
 
@@ -49,10 +49,10 @@ export class AgilidadAritmeticaComponent implements OnInit {
         this.reiniciarTemporizadorYOcultoBotones();
         if (this.nuevoJuego.numeroIngresado == this.operacionRandomAritmeticaRealizada) {
             this.nuevoJuego.gano = true;
-            // alert('GANO');
+            alert('GANO');
         } else {
             this.nuevoJuego.gano = false;
-            // alert('PERDIO');
+            alert('PERDIO');
         }
     }
 

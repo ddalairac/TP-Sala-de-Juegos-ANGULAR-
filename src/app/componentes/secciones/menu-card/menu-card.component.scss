@@ -29,3 +29,10 @@ p {
         margin-right: 5px;
     }
 }
+.primary {
+    background: $secondary !important;
+    color: black;
+    h5 {
+        color: black;
+    }
+}

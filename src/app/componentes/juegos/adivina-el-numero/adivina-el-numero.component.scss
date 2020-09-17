@@ -1,14 +1,17 @@
+@import "src/assets/scss/variables";
 .centered {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
+p{
+    color: white;
+}
 #snackbar.Ganador {
-    background-color: #059f2f;
+    background-color: #2ac283;
 }
 #snackbar.Perdedor {
-    background-color: #ff0000;
+    background-color: #ff4800;
 }
 #snackbar.show {
     visibility: visible;
