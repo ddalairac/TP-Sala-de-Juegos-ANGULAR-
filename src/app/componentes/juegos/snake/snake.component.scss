@@ -1,3 +1,161 @@
 p{
     color: white;
 }
+.input-keypress {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: default;
+}
+.container {
+    position: relative;
+    margin: 0 auto;
+}
+.stage {
+    position: relative;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+.row {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    height: 30px;
+}
+.col {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+.slot,
+.body-link,
+.apple {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+}
+.body-link,
+.apple {
+    position: absolute;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+
+    .ligth {
+        width: 4px;
+        height: 19px;
+        background: #fff;
+        position: relative;
+        top: 6px;
+        left: 4px;
+
+        border-radius: 10px 0 0 10px;
+        -moz-border-radius: 10px 0 0 10px;
+        -webkit-border-radius: 10px 0 0 10px;
+    }
+}
+.body-link {
+    // background: green;
+    .ligth {
+        background: darkseagreen;
+    }
+    .face {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        top: -19px;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        .antenna {
+            width: 10px;
+            height: 20px;
+            border: solid 3px #000;
+            border-color: #000 transparent transparent #000;
+            border-radius: 50%;
+            position: absolute;
+            top: -16px;
+            left: 4px;
+            &-2 {
+                left: 18px;
+                width: 20px;
+            }
+        }
+        .eyes {
+            width: 14px;
+            height: 14px;
+            position: absolute;
+            background: white;
+            left: 11px;
+            top: -1px;
+            border-radius: 50%;
+            border: 1px solid #aaa;
+            .pupil {
+                width: 8px;
+                height: 8px;
+                position: relative;
+                background: black;
+                left: 5px;
+                top: 3px;
+                border-radius: 50%;
+                &-2 {
+                    left: 3px;
+                    top: 1px;
+                }
+            }
+            &-2 {
+                left: 22px;
+            }
+        }
+        .mouth {
+            overflow: hidden;
+            background: red;
+            width: 13px;
+            height: 8px;
+            position: absolute;
+            left: 14px;
+            top: 17px;
+            border-radius: 0 0 50% 50%;
+            -moz-border-radius: 0 0 50% 50%;
+            -webkit-border-radius: 0 0 50% 50%;
+            .no-tongue {
+                width: 13px;
+                height: 6px;
+                background: black;
+                // position: relative;
+                // left: 18px;
+                // top: 4px;
+            }
+        }
+    }
+}
+.apple {
+    // background: red;
+
+    .little-stick {
+        width: 5px;
+        height: 13px;
+        background: rgb(0, 180, 75);
+        position: relative;
+        top: -8px;
+        left: 13px;
+
+        border-radius: 10px 0 10px 0;
+        -moz-border-radius: 10px 0 10px 0;
+        -webkit-border-radius: 10px 0 10px 0;
+    }
+    .ligth {
+        background: orangered;
+        top: -8px;
+    }
+}

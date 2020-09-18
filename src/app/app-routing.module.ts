@@ -22,11 +22,11 @@ import { RegistroComponent } from './componentes/secciones/registro/registro.com
 
 // declaro donde quiero que se dirija
 const MiRuteo = [
-    { path: 'Jugadores', component: JugadoresListadoComponent },
     { path: 'Login', component: LoginComponent },
-    { path: 'Mapa', component: MapaDeGoogleComponent },
-    { path: 'QuienSoy', component: QuienSoyComponent },
     { path: 'Registro', component: RegistroComponent },
+    { path: 'QuienSoy', component: QuienSoyComponent },
+    { path: 'Jugadores', component: JugadoresListadoComponent },
+    { path: 'Mapa', component: MapaDeGoogleComponent },
     { path: 'Principal', component: PrincipalComponent },
     { path: 'Listado', component: ListadoComponent },
     { path: 'Paises', component: ListadoDePaisesComponent },
