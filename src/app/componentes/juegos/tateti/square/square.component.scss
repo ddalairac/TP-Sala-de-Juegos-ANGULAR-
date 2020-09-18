@@ -1,0 +1,36 @@
+@import "src/assets/scss/variables";
+
+.square,
+.square-x,
+.square-o,
+.square-empty,
+.square-win {
+    width: 100%;
+    height: 100%;
+    font-size: 5rem;
+    color: #fff;
+    border: black solid 3px;
+    border-radius: 0.3rem;
+    /* transition: all 0.5s; */
+}
+.square:hover,
+.square-x:hover,
+.square-o:hover,
+.square-empty:hover,
+.square-win:hover {
+    cursor: pointer;
+    // transform: scale(1.1);
+    background: $grey
+}
+.square-x {
+    background: $primary;
+}
+.square-o {
+    background: $secondary;
+}
+.square-empty {
+    background: #333;
+}
+.square-win {
+    background: linear-gradient(to left, #2dbd64, #38ef7d);
+}

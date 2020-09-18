@@ -14,6 +14,7 @@ export class AdivinaElNumeroComponent implements OnInit {
     Mensajes: string;
     contador: number;
     ocultarVerificar: boolean;
+    mensajeClass: string;
 
     constructor() {
         this.nuevoJuego = new JuegoAdivina();
@@ -68,22 +69,21 @@ export class AdivinaElNumeroComponent implements OnInit {
         console.info("numero Secreto:", this.nuevoJuego.gano);
     }
 
-    MostrarMensaje(mensaje: string = "este es el mensaje", ganador: boolean = false) {
+    MostrarMensaje(mensaje: string, ganador: boolean = false) {
         this.Mensajes = mensaje;
-
-        var x = document.getElementById("snackbar");
+        console.log("contador:",this.contador)
         if (ganador) {
-            x.className = "show Ganador";
+            this.mensajeClass = 'bg-success';
         } else {
-            x.className = "show Perdedor";
+            this.mensajeClass = 'bg-danger';
         }
         var modelo = this;
         setTimeout(function () {
-            x.className = x.className.replace("show", "");
+            this.mensajeClass = '';
             modelo.ocultarVerificar = false;
-        }, 3000);
-        console.info("objeto", x);
+        }, 2000);
     }
+
     ngOnInit() {
     }
 

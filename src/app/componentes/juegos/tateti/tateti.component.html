@@ -3,4 +3,39 @@
         Volver
     </button>
 </div>
-<p>ahorcado works!</p>
+
+<h2 class="secondary-text">Tateti</h2>
+
+<div class="container card">
+    <div class="pt-1 text-center" fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center center" fxLayoutGap="20px">
+        <div class="game-info" fxFlex="1 1 50%">
+
+            <h3 *ngIf="!winner && !isDraw" class="subtitle">
+                Turno del jugador
+                <span [ngClass]="{
+          'player-x': playerMarker === 'X',
+          'player-o': playerMarker === 'O'
+        }">{{ playerMarker }}</span>
+            </h3>
+
+            <h3 *ngIf="winner" class="subtitle">
+                El jugador
+                <span [ngClass]="{
+          'player-x': winner === 'X',
+          'player-o': winner === 'O'
+        }">{{ winner }}</span>
+                gano el juego!
+            </h3>
+
+            <h3 *ngIf="isDraw" class="subtitle">Empate!</h3>
+            <button mat-flat-button (click)="newGame()" class="ng-btn">New Game</button>
+        </div>
+
+        <div class="game-board">
+            <main>
+                <app-square *ngFor="let val of squares; let i = index" [value]="val" [disabled]="disable" (click)="makeMove(i)"></app-square>
+            </main>
+            <app-scoresheet></app-scoresheet>
+        </div>
+    </div>
+</div>

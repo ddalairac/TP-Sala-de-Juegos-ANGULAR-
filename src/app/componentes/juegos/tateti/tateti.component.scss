@@ -1,3 +1,45 @@
-:host{
+:host {
     color: white;
+}
+
+main {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(3, 12rem);
+}
+app-square {
+    height: 8rem;
+}
+@media only screen and (max-width: 45em) {
+    .title {
+        font-size: 5rem;
+        padding: 1.5rem 0;
+    }
+}
+.subtitle {
+    color: white;
+    font-weight: 400;
+    font-size: 2rem;
+    padding: 2rem 0 3rem 0;
+}
+@media only screen and (max-width: 45em) {
+    .subtitle {
+        font-size: 2.6rem;
+    }
+}
+.card {
+    button {
+        margin-bottom: 15px;
+        // background-color: #8510d8;
+        // color: #fff;
+    }
+}
+.player-x {
+    font-weight: 750;
+    color: #36f;
+}
+.player-o {
+    font-weight: 750;
+    color: #ff3d71;
 }

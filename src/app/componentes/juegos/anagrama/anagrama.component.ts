@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnagramaComponent implements OnInit {
 
+    ngOnInit() {
+    }
 
     palabrasParaAdivinar = [
         'palabra',
@@ -26,21 +28,21 @@ export class AnagramaComponent implements OnInit {
     palabraSecreta: string = '';
     palabraSecretaMezclada: string = '';
     palabraIngresada: string = '';
-    mensajeAlUsuario: boolean = false;
-    gano: boolean = false;
+    mensajeAlUsuario: boolean;
+    gano: boolean;
     temporizador: any;
     tiempo: any = 3;
 
     constructor() { }
 
-    ngOnInit() {
-    }
+
 
     nuevoJuego() {
         this.gano = false;
         this.palabraSecreta = this.palabrasParaAdivinar[Math.floor(Math.random() * this.palabrasParaAdivinar.length + 1)];
 
         let arrayDeCaracteresOrdenados = [...this.palabraSecreta];
+        console.log("CaracteresOrdenados: ",arrayDeCaracteresOrdenados)
 
         this.palabraSecretaMezclada = arrayDeCaracteresOrdenados
             .map((a) => ({ sort: Math.random(), value: a }))//Le agrego una key numerica aleatoria

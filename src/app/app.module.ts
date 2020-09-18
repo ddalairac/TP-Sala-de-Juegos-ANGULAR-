@@ -57,8 +57,9 @@ import { StageSlotComponent } from './componentes/juegos/snake/components/stage-
 import { StageComponent } from './componentes/juegos/snake/components/stage/stage.component';
 import { SnakeComponent } from './componentes/juegos/snake/snake.component';
 import { PptComponent } from './componentes/juegos/ppt/ppt.component';
-import { AhorcadoComponent } from './componentes/juegos/ahorcado/ahorcado.component';
 import { TatetiComponent } from './componentes/juegos/tateti/tateti.component';
+import { SquareComponent } from './componentes/juegos/tateti/square/square.component';
+import { ScoresheetComponent } from './componentes/juegos/tateti/scoresheet/scoresheet.component';
 
 @NgModule({
   declarations: [
@@ -91,8 +92,9 @@ import { TatetiComponent } from './componentes/juegos/tateti/tateti.component';
     StageSlotComponent,
     AppleComponent,
     PptComponent,
-    AhorcadoComponent,
-    TatetiComponent
+    TatetiComponent,
+    SquareComponent,
+    ScoresheetComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 <input class="input-keypress" (keydown)="onKeydown($event)" autofocus />
 
 <div class="container" [ngStyle]="{ width: stageWidth + 'px' }">
-  <h1>Snake</h1>
+
 </div>
 <div class="stage" [ngStyle]="{ width: stageWidth + 'px' }">
   <div class="row" *ngFor="let h of stageSlots[0]; let hIndex = index">

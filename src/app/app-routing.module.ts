@@ -4,7 +4,7 @@ import { AdivinaElNumeroComponent } from './componentes/juegos/adivina-el-numero
 import { AdivinaMasListadoComponent } from './componentes/juegos/adivina-mas-listado/adivina-mas-listado.component';
 import { AgilidadAritmeticaComponent } from './componentes/juegos/agilidad-aritmetica/agilidad-aritmetica.component';
 import { AgilidadMasListadoComponent } from './componentes/juegos/agilidad-mas-listado/agilidad-mas-listado.component';
-import { AhorcadoComponent } from './componentes/juegos/ahorcado/ahorcado.component';
+import { AnagramaComponent } from './componentes/juegos/anagrama/anagrama.component';
 import { PptComponent } from './componentes/juegos/ppt/ppt.component';
 import { SnakeComponent } from './componentes/juegos/snake/snake.component';
 import { TatetiComponent } from './componentes/juegos/tateti/tateti.component';
@@ -34,11 +34,11 @@ const MiRuteo = [
             { path: '', component: MenuCardComponent },
             { path: 'Adivina', component: AdivinaElNumeroComponent },
             { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
-            { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
             { path: 'Agilidad', component: AgilidadAritmeticaComponent },
+            { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
             { path: 'Snake', component: SnakeComponent },
             { path: 'PPT', component: PptComponent },
-            { path: 'Ahorcado', component: AhorcadoComponent },
+            { path: 'Anagrama', component: AnagramaComponent },
             { path: 'Tateti', component: TatetiComponent },
         ]
     },
