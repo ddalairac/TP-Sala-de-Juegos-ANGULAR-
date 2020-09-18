@@ -13,17 +13,11 @@ body {
     background-image: linear-gradient(310deg, $bg-color, black);
     color: white;
 }
-*{
-    box-sizing: border-box;
-}
-
-
 html {
     position: relative;
     display: block; //position: initial;
     overflow-y: auto;
 }
-
 body {
     margin: 0;
     overflow-y: scroll;
@@ -32,6 +26,9 @@ body {
     min-height: 100%;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     padding-bottom: 60px;
+}
+*{
+    box-sizing: border-box;
 }
 @import "utilities";
 @import "type";
