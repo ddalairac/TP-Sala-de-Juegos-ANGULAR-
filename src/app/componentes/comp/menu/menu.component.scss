@@ -1,11 +1,25 @@
 @import "src/assets/scss/variables";
 .navbar-brand {
-    margin-left: 30px;
+    margin-left: 15px;
     color: $primary;
-    span{
+    span {
         color: $primary-light;
     }
 }
 .bg-dark {
     background-color: $bg-color !important;
+}
+.container {
+    padding: 0 30px;
+}
+
+@media screen and (max-width: $tablet-min-w) {
+    .navbar-nav{
+        margin-top: 10px;
+    }
+    .mat-button-base {
+        border: 1px solid $border-color;
+        margin-bottom: 3px;
+        width: 100%;
+    }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Router, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -8,18 +8,18 @@ import { AuthService } from './auth.service';
 export class UrlAccessService {
     constructor(private router: Router,private authService: AuthService) { }
     canActivate(state: RouterStateSnapshot): boolean {
-        // return this.checkRoute(state.url);
-        return true;
+        return this.checkRoute(state.url);
+        // return true;
     }
     private checkRoute(path){
         // alert(this.router.url)
-        if (this.router.url === '/Login' || this.router.url === '/Registro') {
-        // if (path === '/Login' || path === '/Registro') {
+        if (this.router.url === '/authuser') {
+        // if (path === '/authuser') {
             return true;
         } else if(this.authService.getUserCredential()){
             return true;
         }
-        this.router.navigate(['/Login'])
+        this.router.navigate(['/authuser'])
         return false;
     }
 }

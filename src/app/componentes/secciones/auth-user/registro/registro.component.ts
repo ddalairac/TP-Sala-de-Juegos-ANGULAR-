@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, eAuthEstado, iAuthError } from '../../../servicios/auth.service';
+import { AuthService, eAuthEstado, iAuthError } from '../../../../servicios/auth.service';
 //para poder hacer las validaciones
 //import { Validators, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 @Component({
@@ -40,6 +40,7 @@ export class RegistroComponent implements OnInit {
                     console.log("Registro:", res)
                     this.authService.persistLoginData(res, this.usuario, this.clave, this.rememberMe);
                     this.router.navigateByUrl('principal');
+                    this.authService.isIn();
                 },
                 (error: iAuthError) => {
                     console.log("Error Registro:", error)

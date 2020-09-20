@@ -1,29 +1,29 @@
 @import "src/assets/scss/variables";
-:host{
-    background:black;
+:host {
+    background: black;
     display: block;
 }
-.logo{
+.logo {
     width: 187px;
     height: 142px;
 }
 .panel {
-    min-height:150px;
+    min-height: 150px;
     position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;   
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
 }
-h1{
+h1 {
     width: 100%;
 }
-p{
-    color:$secondary;
+p {
+    color: $secondary;
     margin-bottom: 0;
 }
-a{
-    color:$tertiary;
+a {
+    color: $tertiary;
 }
 
 .hero-text {
@@ -31,12 +31,12 @@ a{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-// text-align: center;
-// position: absolute;
-// top: 50%;
-// left: 50%;
-// transform: translate(-50%, -50%);
-// color: #3E06B0;
+    // text-align: center;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    // color: #3E06B0;
 }
 
 // .hero-text a {
@@ -54,3 +54,9 @@ a{
 // background-color: #555;
 // color: white;
 // }
+
+@media screen and (max-width: $tablet-min-w) {
+    h1 {
+        font-size: 22px;
+    }
+}

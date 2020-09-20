@@ -10,14 +10,15 @@ import { HttpModule } from '@angular/http';
 
 
 
+import { AuthUserComponent } from './componentes/secciones/auth-user/auth-user.component';
+import { RegistroComponent } from './componentes/secciones/auth-user/registro/registro.component';
+import { LoginComponent } from './componentes/secciones/auth-user/login/login.component';
 import { PrincipalComponent } from './componentes/secciones/principal/principal.component';
-import { RegistroComponent } from './componentes/secciones/registro/registro.component';
 import { QuienSoyComponent } from './componentes/secciones/quien-soy/quien-soy.component';
 import { ErrorComponent } from './componentes/secciones/error/error.component';
 import { ListadoComponent } from './componentes/secciones/listado/listado.component';
 import { ListadoDePaisesComponent } from './componentes/secciones/listado-de-paises/listado-de-paises.component';
 import { JugadoresListadoComponent } from './componentes/secciones/jugadores-listado/jugadores-listado.component';
-import { LoginComponent } from './componentes/secciones/login/login.component';
 import { MapaDeGoogleComponent } from './componentes/secciones/mapa-de-google/mapa-de-google.component'
 import { JuegosComponent } from './componentes/secciones/juegos/juegos.component';
 import { MenuCardComponent } from './componentes/secciones/juegos/menu-card/menu-card.component';
@@ -101,7 +102,8 @@ import { InterceptorService } from './servicios/interceptor.service';
         SquareComponent,
         ScoresheetComponent,
         GoBackComponent,
-        LoaderComponent
+        LoaderComponent,
+        AuthUserComponent
     ],
     imports: [
         BrowserModule,

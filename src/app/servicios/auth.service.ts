@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs/internal/observable/of';
+import { Subject } from 'rxjs/internal/Subject';
 import { switchMap } from 'rxjs/operators';
 import { LoaderService } from './loader.service';
 
@@ -12,10 +13,19 @@ import { LoaderService } from './loader.service';
 })
 export class AuthService {
 
-    constructor(private fireAuth: AngularFireAuth, public afs: AngularFirestore, private router: Router, private loader:LoaderService) { }
+    constructor(private fireAuth: AngularFireAuth, public afs: AngularFirestore, private router: Router, private loader: LoaderService) { }
 
     private user: string
     private UserCredential: firebase.auth.UserCredential
+
+    isLogged$ = new Subject<boolean>();
+    isIn() {
+        this.isLogged$.next(true);
+    }
+    isOut() {
+        this.isLogged$.next(false);
+    }
+
     public async singIn(usuario, clave) {
         this.loader.show();
         let res = await this.fireAuth.signInWithEmailAndPassword(usuario, clave);
@@ -29,6 +39,7 @@ export class AuthService {
         this.user = ''
         this.UserCredential = null
         this.loader.hide();
+        this.isLogged$.next(false);
         this.router.navigateByUrl('');
     }
     public async register(usuario, clave) {

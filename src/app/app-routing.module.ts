@@ -8,23 +8,22 @@ import { AnagramaComponent } from './componentes/juegos/anagrama/anagrama.compon
 import { PptComponent } from './componentes/juegos/ppt/ppt.component';
 import { SnakeComponent } from './componentes/juegos/snake/snake.component';
 import { TatetiComponent } from './componentes/juegos/tateti/tateti.component';
+import { AuthUserComponent } from './componentes/secciones/auth-user/auth-user.component';
 import { ErrorComponent } from './componentes/secciones/error/error.component';
 import { JuegosComponent } from './componentes/secciones/juegos/juegos.component';
 import { MenuCardComponent } from './componentes/secciones/juegos/menu-card/menu-card.component';
 import { JugadoresListadoComponent } from './componentes/secciones/jugadores-listado/jugadores-listado.component';
 import { ListadoDePaisesComponent } from './componentes/secciones/listado-de-paises/listado-de-paises.component';
 import { ListadoComponent } from './componentes/secciones/listado/listado.component';
-import { LoginComponent } from './componentes/secciones/login/login.component';
+
 import { MapaDeGoogleComponent } from './componentes/secciones/mapa-de-google/mapa-de-google.component';
 import { PrincipalComponent } from './componentes/secciones/principal/principal.component';
 import { QuienSoyComponent } from './componentes/secciones/quien-soy/quien-soy.component';
-import { RegistroComponent } from './componentes/secciones/registro/registro.component';
 import { UrlAccessService } from './servicios/url-access.service';
 
 // declaro donde quiero que se dirija
 const MiRuteo = [
-    { path: 'login',        component: LoginComponent },
-    { path: 'registro',     component: RegistroComponent },
+    { path: 'authuser',     component: AuthUserComponent },
     { path: 'quiensoy',     component: QuienSoyComponent },
     { path: 'principal',    component: PrincipalComponent,          canActivate: [UrlAccessService] },
     { path: 'jugadores',    component: JugadoresListadoComponent,   canActivate: [UrlAccessService] },

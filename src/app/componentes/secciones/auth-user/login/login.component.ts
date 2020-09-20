@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { TimerObservable } from "rxjs/observable/TimerObservable";
-import { AuthService, eAuthEstado, iAuthError } from '../../../servicios/auth.service';
+import { AuthService, eAuthEstado, iAuthError } from '../../../../servicios/auth.service';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit {
             this.authService.singIn(this.usuario, this.clave).then(
                 res => {
                     console.log("Login:", res)
-                    this.authService.persistLoginData(res,this.usuario,this.clave,this.rememberMe)
+                    this.authService.persistLoginData(res,this.usuario,this.clave,this.rememberMe);
+                    this.authService.isIn();
                     this.router.navigateByUrl('principal');
                 },
                 (error: iAuthError) => {
