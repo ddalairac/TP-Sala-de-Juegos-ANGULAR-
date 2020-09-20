@@ -40,7 +40,7 @@ export class AuthService {
         this.UserCredential = null
         this.loader.hide();
         this.isLogged$.next(false);
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('/authuser');
     }
     public async register(usuario, clave) {
         this.loader.show();
