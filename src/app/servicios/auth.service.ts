@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { of } from 'rxjs/internal/observable/of';
 import { Subject } from 'rxjs/internal/Subject';
-import { switchMap } from 'rxjs/operators';
 import { LoaderService } from './loader.service';
 
 @Injectable({
@@ -13,7 +10,12 @@ import { LoaderService } from './loader.service';
 })
 export class AuthService {
 
-    constructor(private fireAuth: AngularFireAuth, public afs: AngularFirestore, private router: Router, private loader: LoaderService) { }
+    constructor(
+        private fireAuth: AngularFireAuth,
+        public afs: AngularFirestore,
+        private router: Router,
+        private loader: LoaderService
+    ) { }
 
     private user: string
     private UserCredential: firebase.auth.UserCredential
@@ -26,11 +28,42 @@ export class AuthService {
         this.isLogged$.next(false);
     }
 
-    public async singIn(usuario, clave) {
+    public async register(usuario, clave,rememberMe) {
         this.loader.show();
-        let res = await this.fireAuth.signInWithEmailAndPassword(usuario, clave);
-        this.loader.hide();
-        return res
+        return new Promise((resolve, reject) => {
+            this.fireAuth.createUserWithEmailAndPassword(usuario, clave)
+                .then(res => {
+                    console.log("registrar: ", { user: usuario, pass: clave })
+                    this.persistLoginData(res, usuario, clave, rememberMe);
+                    this.isLogged$.next(true);
+                    this.loader.hide();
+                    resolve(res)
+                }).catch((error: iAuthError) => {
+                    console.log("Error Registro:", error)
+                    this.loader.hide();
+                    reject(error)
+                })
+        })
+    }
+
+    public async singIn(usuario, clave, rememberMe) {
+        this.loader.show();
+        return new Promise((resolve, reject) => {
+            this.fireAuth.signInWithEmailAndPassword(usuario, clave).then(
+                res => {
+                    console.log("Login:", res)
+                    this.persistLoginData(res, usuario, clave, rememberMe);
+                    this.isLogged$.next(true);
+                    this.loader.hide();
+                    resolve(res)
+                }).catch(
+                    (error: iAuthError) => {
+                        console.log("Error Login:", error)
+                        this.loader.hide();
+                        reject(error)
+                    }
+                )
+        });
     }
 
     public async singOut() {
@@ -42,21 +75,16 @@ export class AuthService {
         this.isLogged$.next(false);
         this.router.navigateByUrl('/authuser');
     }
-    public async register(usuario, clave) {
-        this.loader.show();
-        console.log("registrar: ", { user: usuario, pass: clave })
-        let res = await this.fireAuth.createUserWithEmailAndPassword(usuario, clave);
-        this.loader.hide();
-        return res
-    }
+
+
     public getUserName() {
-        // console.log("firestore", this.afs.firestore)
-        // console.log("firestore", this.afs.createId())
         return this.user;
     }
+
     public getUserCredential() {
         return this.UserCredential;
     }
+
     public persistLoginData(res, usuario, clave, rememberMe) {
         this.user = usuario;
         this.UserCredential = res

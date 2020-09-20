@@ -42,8 +42,8 @@ import { MenuComponent } from './componentes/comp/menu/menu.component';
 import { GoBackComponent } from './componentes/comp/go-back/go-back.component';
 import { LoaderComponent } from './componentes/comp/loader/loader.component';
 import { CabeceraComponent } from './componentes/comp/cabecera/cabecera.component';
-import { ListadoDeResultadosComponent } from './componentes/comp/listado-de-resultados/listado-de-resultados.component';
 import { ListadosComponent } from './componentes/comp/listados/listados.component';
+import { ListadoDeResultadosComponent } from './componentes/comp/listados/listado-de-resultados/listado-de-resultados.component';
 import { InputJugadoresComponent } from './componentes/comp/input-jugadores/input-jugadores.component';
 
 import { RuteandoModule } from './app-routing.module';

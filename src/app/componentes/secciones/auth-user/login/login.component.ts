@@ -9,7 +9,7 @@ import { AuthService, eAuthEstado, iAuthError } from '../../../../servicios/auth
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    constructor(private authService: AuthService,private router:Router) { }
+    constructor(private authService: AuthService, private router: Router) { }
     usuario: string;
     clave: string;
     invalidUsuario: boolean
@@ -31,18 +31,14 @@ export class LoginComponent implements OnInit {
         let isvalid: eAuthEstado = this.authService.validarDatos(this.usuario, this.clave)
 
         if (isvalid == eAuthEstado.valid) {
-            this.authService.singIn(this.usuario, this.clave).then(
-                res => {
-                    console.log("Login:", res)
-                    this.authService.persistLoginData(res,this.usuario,this.clave,this.rememberMe);
-                    this.authService.isIn();
+            this.authService.singIn(this.usuario, this.clave, this.rememberMe)
+                .then(res => {
                     this.router.navigateByUrl('principal');
-                },
-                (error: iAuthError) => {
+                }).catch((error: iAuthError) => {
                     console.log("Error Login:", error)
                     this.errorMensaje = error.message
-                }
-            )
+                })
+
         } else {
             this.errorMensaje = isvalid;
             switch (isvalid) {
