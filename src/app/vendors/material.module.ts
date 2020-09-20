@@ -2,6 +2,8 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
 // import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
@@ -26,7 +28,7 @@ import { MatInputModule } from '@angular/material/input';
         // MatNativeDateModule,
         // MatPaginatorModule,
         // MatProgressBarModule,
-        // MatProgressSpinnerModule,
+        MatProgressSpinnerModule,
         // MatRadioModule,
         // MatRippleModule,
         // MatSelectModule,
@@ -38,7 +40,7 @@ import { MatInputModule } from '@angular/material/input';
         // MatTableModule,
         // MatTabsModule,
         // MatToolbarModule,
-        // MatTooltipModule,
+        MatTooltipModule,
         // MatMomentDateModule
     ],
     declarations: []

@@ -1,57 +1,44 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!--app-menu></app-menu-->
-<!-- index.html -->
-<div class="volver">
-    <button type="button" mat-raised-button color="secondary" routerLink="/Juegos">
-        Volver
-    </button>
-</div>
-<h2 class="secondary-text">Agilidad aritmética</h2>
-<div class="container card">
-    <div class="row text-center">
-        <div class="col  d-flex justify-content-center">
-            <ul class="list-group col-6" style="width: 100%;">
-                <li class="list-group-item text-center">
-                    Primer número:
-                    <input [(ngModel)]="primerNumero" name="PrimerNumero" type="text" class="form-control" readonly />
-                </li>
-                <li class="list-group-item text-center">
-                    Operador:
-                    <input [(ngModel)]="operadorElegido" name="OperadorElegido" type="text" class="form-control" readonly />
+<app-go-back title="Agilidad aritmética"></app-go-back>
 
-                </li>
-                <li class="list-group-item text-center">
-                    Segundo número:
-                    <input [(ngModel)]="segundoNumero" name="SegundoNumero" type="text" class="form-control" readonly />
-                </li>
-                <li class="list-group-item text-center">
-                    Respuesta:
-                    <input placeholder="Ingrese numero" name="numeroIngresado" type="text" class="form-control" autocomplete="off"
-                        [(ngModel)]="nuevoJuego.numeroIngresado" />
-                </li>
-                <li [hidden]="ocultarVerificar" class="list-group-item text-center">
-                    <h2>
-                        <button (click)="verificar()" class="btn btn-success btn-lg">
-                            Verificar {{tiempo}}
-                        </button>
-                    </h2>
-                </li>
-                <li [hidden]="!ocultarVerificar" class="list-group-item text-center">
-                    <h2>
-                        <button (click)="onNuevoJuego()" class="btn btn-info btn-lg">
-                            Comenzar Nuevo Juego
-                        </button>
-                    </h2>
-                </li>
-                <li [hidden]="ocultarVerificar" class="list-group-item text-center">
-                    <h2>
-                        <p>
-                            <i class="fa fa-spinner fa-spin"></i>
-                            Esperando resultado..
-                        </p>
-                    </h2>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+<ul class="list-group text-center">
+    <li class="list-group-item ">
+        Primer número:
+        <input [(ngModel)]="primerNumero" name="PrimerNumero" type="text" class="form-control" readonly />
+    </li>
+    <li class="list-group-item ">
+        Operador:
+        <input [(ngModel)]="operadorElegido" name="OperadorElegido" type="text" class="form-control" readonly />
+
+    </li>
+    <li class="list-group-item ">
+        Segundo número:
+        <input [(ngModel)]="segundoNumero" name="SegundoNumero" type="text" class="form-control" readonly />
+    </li>
+    <li class="list-group-item ">
+        Respuesta:
+        <input placeholder="Ingrese numero" name="numeroIngresado" type="text" class="form-control" autocomplete="off"
+            [(ngModel)]="nuevoJuego.numeroIngresado" />
+    </li>
+    <li [hidden]="ocultarVerificar" class="list-group-item ">
+        <h2>
+            <button (click)="verificar()" class="btn btn-success btn-lg">
+                Verificar {{tiempo}}
+            </button>
+        </h2>
+    </li>
+    <li [hidden]="!ocultarVerificar" class="list-group-item ">
+        <h2>
+            <button (click)="onNuevoJuego()" class="btn btn-info btn-lg">
+                Comenzar Nuevo Juego
+            </button>
+        </h2>
+    </li>
+    <li [hidden]="ocultarVerificar" class="list-group-item ">
+        <h2>
+            <p>
+                <i class="fa fa-spinner fa-spin"></i>
+                Esperando resultado..
+            </p>
+        </h2>
+    </li>
+</ul>

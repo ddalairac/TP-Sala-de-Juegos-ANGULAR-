@@ -1,50 +1,41 @@
-
-
-
-
-
+<div class="header"></div>
 
 <div class="container">
+    <div class="card page">
+        <div class="character">
+            <img src="./assets/imagenes/new/darth_vader.gif" alt="" class="flip-h">
+        </div>
 
-    <!-- First container-fluid -->
-    <div class="bg-1">
-        <div class="container-fluid">
-            <h1>Quién Soy?</h1>
+        <app-go-back title="Quién Soy"></app-go-back>
+        <hr>
+        <div class="summary-header ">
+            <img alt="" class="circle" src="./assets/imagenes/quiensoy.jpg">
 
-
-            <!-- quien -->
-            <div class="summary-header ">
-                <img alt="" class="circle" src="./assets/imagenes/quiensoy.jpg">
-
-                <div class="text">
-                    <h2>Diego Dalairac</h2>
-                    <h4>Desarrollador &amp; Diseñador</h4>
+            <div class="text">
+                <h3 class="tertiary-text">Diego Dalairac</h3>
+                <p>Desarrollador &amp; Diseñador 
+                    <!-- <br>
+                    <a href="mailto:diegodalairac@gmail.com">diegodalairac@gmail.com</a> -->
+                </p>
+                <div class="iconos">
+                    <button mat-icon-button (click)="gotoUrl('https://vimeo.com/saltamonte/reel')" matTooltip="Reel"><i class="fas fa-film"></i></button>
+                    <button mat-icon-button (click)="gotoUrl('http://saltamonte.com.ar/')" matTooltip="Portfolio"><i class="fas fa-briefcase"></i></button>
+                    <button mat-icon-button (click)="gotoUrl('https://github.com/ddalairac')" matTooltip="Github"><i class="fab fa-github"></i></button>
                 </div>
             </div>
-            <p>Soy un diseñador gráfico de la U.B.A. Me especialicé en UX / UI, pero en la mitad de mi carrera comence a dedicarme al desarrollo.</p>
-            <p>Mi rango de habilidades va desde impresión, animación, UI / UX a frontend, lo que me permite diseñar y codear al mismo tiempo, lo que
-                actualmente estoy haciendo para Santander Tecnología.</p>
-
-            <!-- <a href="mailto:diegodalairac@gmail.com">diegodalairac@gmail.com</a> -->
-
-            <!-- END quien -->
-
-            <h3>Juego</h3>
-            <p>voy a usar uno de estos 2 juegos que hice para practicar:</p>
-            <ul>
-                <li>
-                    <strong>Snake: </strong><br>
-                    - <a href="https://github.com/ddalairac/game-snake">github.com/ddalairac/game-snake</a><br>
-                    - <a href="https://ddalairac.github.io/game-snake/">demo</a>
-                </li>
-                <li>
-                    <strong>breakout: </strong><br>
-                    - <a href="https://github.com/ddalairac/game-breakout">github.com/ddalairac/game-breakout</a><br>
-                    - <a href="github.com/ddalairac/game-breakout">demo</a>
-
-                </li>
-            </ul>
         </div>
+        <p>Soy un diseñador gráfico de la U.B.A. Me especialicé en UX / UI, pero en la mitad de mi carrera comence a dedicarme al desarrollo.</p>
+        <p>Mi rango de habilidades va desde impresión, animación, UI / UX a frontend, lo que me permite diseñar y codear al mismo tiempo, lo que
+            actualmente estoy haciendo para Santander Tecnología.</p>
+
+
+        <!-- END quien -->
+
+        <hr>
+        <h4 class="tertiary-text">Juego</h4>
+        <p>Este Snake lo hice para practicar, es el que voy a usar en el TP:</p>
+        <a href="https://github.com/ddalairac/game-snake">github.com/ddalairac/game-snake</a><br>
+  
     </div>
 
     <!-- Second container-fluid -->

@@ -1,38 +1,34 @@
-<div class="volver">
-    <button type="button" mat-raised-button color="secondary" routerLink="/Juegos">
-        Volver
-    </button>
-</div>
-
-<h2 class="secondary-text">Piedra papel o tijera</h2>
-
-<div class="container card">
-    <div class="row">
-        <div class="col text-center">
-            <div id="user-label">Elegiste: {{eleccionUsuario | uppercase}}</div><br>
+<app-go-back title="Piedra papel o tijera"></app-go-back>
+<ul class="list-group text-center">
+    <li class="list-group-item ">
+        
+        <div class="row">
+            <div class="col text-center">
+                <div id="user-label">Elegiste: {{eleccionUsuario | uppercase}}</div><br>
+            </div>
+            <div class="col text-center">
+                <div id="comp-label">Computadora : {{eleccionPC | uppercase}}</div>
+            </div>
         </div>
-        <div class="col text-center">
-            <div id="comp-label">Computadora : {{eleccionPC | uppercase}}</div>
-        </div>
-    </div>
 
 
-    <div class="result">
-        <p *ngIf="estadoPartida">{{eleccionUsuario | uppercase}} {{resultadoFinal}} {{eleccionPC | uppercase}}
-            {{estadoPartida}} </p>
-    </div>
+        <div class="result">
+            <p *ngIf="estadoPartida">{{eleccionUsuario | uppercase}} {{resultadoFinal}} {{eleccionPC | uppercase}}
+                {{estadoPartida}} </p>
+        </div>
 
-    <div class="choices">
-        <div class="choice" id="piedra">
-            <img src="../../../assets/imagenes/new/piedra.png" (click)='userPick("piedra")'>
+        <div class="choices">
+            <div class="choice" id="piedra">
+                <img src="../../../assets/imagenes/new/piedra.png" (click)='userPick("piedra")'>
+            </div>
+            <div class="choice" id="papel">
+                <img src="../../../assets/imagenes/new/papel.png" (click)='userPick("papel")'>
+            </div>
+            <div class="choice" id="tijera">
+                <img src="../../../assets/imagenes/new/tijera.png" (click)='userPick("tijera")'>
+            </div>
         </div>
-        <div class="choice" id="papel">
-            <img src="../../../assets/imagenes/new/papel.png" (click)='userPick("papel")'>
-        </div>
-        <div class="choice" id="tijera">
-            <img src="../../../assets/imagenes/new/tijera.png" (click)='userPick("tijera")'>
-        </div>
-    </div>
 
-    <p id="action-message" *ngIf="!estadoPartida">Podes elegir</p>
-</div>
+        <p id="action-message" *ngIf="!estadoPartida">Podes elegir</p>
+    </li>
+</ul>

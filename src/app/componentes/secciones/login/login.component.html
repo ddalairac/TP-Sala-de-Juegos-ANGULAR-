@@ -1,57 +1,30 @@
-<!--div >
-  <div class="row">
-    <div class="col-lg-6">
-      Usuario
-    </div>
-    <div class="col-lg-6">
-      <input type="text"  [(ngModel)]="usuario">
-    </div>
-  </div>
-  <div class="row" >
-    <div class="col-lg-6">
-      Clave
-    </div>
-    <div class="col-lg-6">
-      <input type="password" [(ngModel)]="clave">
-    </div>
-  </div>
-  <div class="row" >
-    <div class="col-lg-12">
-      <button (click)="Entrar()" class="btn btn-info btn-lg" >Entrar</button>
-    </div>
-  </div>
-</div-->
- <div class="container-fluid" >
-  <div class="jumbotron" >
-    <form action="return true;">
-      <div class="imgcontainer-fluid">
-        <img src="./assets/imagenes/login.png" alt="Avatar" class="avatar" max-width="104" >
-      </div>
-
-      <div class="container-fluid">
-        <label><b>Usuario</b></label>
-        <input type="text" placeholder="Usuario"  [(ngModel)]="usuario"  name="uname" required>
-
-        <label><b>Clave</b></label>
-        <input type="password" placeholder="Clave"  [(ngModel)]="clave" name="psw" required>
-            
-        <button mat-raised-button color="secondary" *ngIf="logeando"  (click)="MoverBarraDeProgreso()" >Ingresar</button>
-       
-        <div *ngIf="!logeando" class="progress">
-            <div class="progress-bar progress-bar-info progress-bar-striped active" [class]="clase" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="ProgresoDeAncho" >
-              {{progresoMensaje}} - {{progreso}}%
+<div class="container">
+    <div class="card">
+        <h2 class="card-header">Login</h2>
+        <div class="card-body">
+            <div class="alert alert-danger" role="alert" *ngIf="errorMensaje">
+                {{errorMensaje}}
             </div>
-        </div>
-       
-        <input type="checkbox" checked="checked"> Recordar mis datos
-      </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input [(ngModel)]="usuario" type="email" class="form-control" placeholder="Ingresa tu correo" name="email"
+                    [class.is-invalid]="invalidUsuario" required>
+            </div>
+            <div class="form-group">
+                <label>Clave</label>
+                <input [(ngModel)]="clave" type="password" class="form-control" placeholder="Aca la clave" name="clave"
+                    [class.is-invalid]="invalidClave" required>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" [(ngModel)]="rememberMe"  class="form-check-input" id="remember" checked="checked">
+                <label class="form-check-label" for="remember">Recordar mis datos</label>
+            </div>
 
-      <div class="container-fluid" >
-        <button mat-raised-button color="secondary" type="button" >Cancelar</button>
-        <button mat-raised-button color="secondary" type="button"  routerLink="/Registro" >Registrarse</button>
-        <span class="psw">Te olvidaste <a href="#">la clave?</a></span>
-      </div>
-     
-    </form>
-  </div>
+        </div>
+        <div class="card-footer">
+            <button mat-raised-button color="primary" type="button" routerLink="/registro">No tengo usuario</button>
+            <button mat-raised-button color="secondary" type="submit" (click)="onLogin()">Ingersar</button>
+            <span class="psw">Te olvidaste <a href="#">la clave?</a></span>
+        </div>
+    </div>
 </div>

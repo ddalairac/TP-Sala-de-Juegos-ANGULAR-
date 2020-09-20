@@ -1,4 +1,8 @@
 @import "src/assets/scss/variables";
+:host{
+    background:black;
+    display: block;
+}
 .logo{
     width: 187px;
     height: 142px;

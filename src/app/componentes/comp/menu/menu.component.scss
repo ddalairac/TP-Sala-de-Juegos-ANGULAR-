@@ -1,0 +1,11 @@
+@import "src/assets/scss/variables";
+.navbar-brand {
+    margin-left: 30px;
+    color: $primary;
+    span{
+        color: $primary-light;
+    }
+}
+.bg-dark {
+    background-color: $bg-color !important;
+}

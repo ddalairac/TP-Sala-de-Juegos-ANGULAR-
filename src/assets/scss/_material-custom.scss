@@ -22,7 +22,7 @@
 //   color: (
 //     primary: $candy-app-primary,
 //     accent: $candy-app-accent,
-//     warn: $candy-app-warn,  
+//     warn: $candy-app-warn,
 //   )
 // ));
 
@@ -30,11 +30,57 @@
 // // Alternatively, you can import and @include the theme mixins for each component
 // // that you are using.
 // @include angular-material-theme($candy-app-theme);
+.mat-button-base {
+    color: white;
 
-.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary{
-    background: $primary;
+    &.mat-primary {
+        color: $secondary;
+    }
+    &.mat-secondary {
+        color: $tertiary;
+    }
 }
+.mat-raised-button {
+    color: white;
 
-.mat-flat-button.mat-secondary, .mat-raised-button.mat-secondary, .mat-fab.mat-secondary, .mat-mini-fab.mat-secondary{
-    background: $tertiary;
+    &.mat-primary {
+        color: black;
+        background: $secondary;
+    }
+    &.mat-secondary {
+        color: white;
+        background: $tertiary;
+    }
 }
+.mat-mini-fab {
+    color: white;
+    &.mat-primary {
+        color: black;
+        background: $secondary;
+    }
+    &.mat-secondary {
+        color: white;
+        background: $tertiary;
+    }
+}
+.mat-icon-button{
+    &:focus {
+        outline:none!important;
+        background: rgba(0, 0, 0, 0.25);
+    }
+}
+// // }
+// .mat-flat-button {
+//     &.mat-primary,
+//     .mat-raised-button.mat-primary,
+//     .mat-fab.mat-primary,
+//     .mat-mini-fab.mat-primary {
+//         background: $secondary;
+//     }
+// }
+// .mat-flat-button.mat-secondary,
+// .mat-raised-button.mat-secondary,
+// .mat-fab.mat-secondary,
+// .mat-mini-fab.mat-secondary {
+//     background: $tertiary;
+// }

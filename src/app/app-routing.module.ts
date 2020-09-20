@@ -10,41 +10,42 @@ import { SnakeComponent } from './componentes/juegos/snake/snake.component';
 import { TatetiComponent } from './componentes/juegos/tateti/tateti.component';
 import { ErrorComponent } from './componentes/secciones/error/error.component';
 import { JuegosComponent } from './componentes/secciones/juegos/juegos.component';
+import { MenuCardComponent } from './componentes/secciones/juegos/menu-card/menu-card.component';
 import { JugadoresListadoComponent } from './componentes/secciones/jugadores-listado/jugadores-listado.component';
 import { ListadoDePaisesComponent } from './componentes/secciones/listado-de-paises/listado-de-paises.component';
 import { ListadoComponent } from './componentes/secciones/listado/listado.component';
 import { LoginComponent } from './componentes/secciones/login/login.component';
 import { MapaDeGoogleComponent } from './componentes/secciones/mapa-de-google/mapa-de-google.component';
-import { MenuCardComponent } from './componentes/secciones/menu-card/menu-card.component';
 import { PrincipalComponent } from './componentes/secciones/principal/principal.component';
 import { QuienSoyComponent } from './componentes/secciones/quien-soy/quien-soy.component';
 import { RegistroComponent } from './componentes/secciones/registro/registro.component';
+import { UrlAccessService } from './servicios/url-access.service';
 
 // declaro donde quiero que se dirija
 const MiRuteo = [
-    { path: 'Login', component: LoginComponent },
-    { path: 'Registro', component: RegistroComponent },
-    { path: 'QuienSoy', component: QuienSoyComponent },
-    { path: 'Jugadores', component: JugadoresListadoComponent },
-    { path: 'Mapa', component: MapaDeGoogleComponent },
-    { path: 'Principal', component: PrincipalComponent },
-    { path: 'Listado', component: ListadoComponent },
-    { path: 'Paises', component: ListadoDePaisesComponent },
-    { path: 'Juegos', component: JuegosComponent, children: [
-            { path: '', component: MenuCardComponent },
-            { path: 'Adivina', component: AdivinaElNumeroComponent },
-            { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
-            { path: 'Agilidad', component: AgilidadAritmeticaComponent },
-            { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
-            { path: 'Snake', component: SnakeComponent },
-            { path: 'PPT', component: PptComponent },
-            { path: 'Anagrama', component: AnagramaComponent },
-            { path: 'Tateti', component: TatetiComponent },
+    { path: 'login',        component: LoginComponent },
+    { path: 'registro',     component: RegistroComponent },
+    { path: 'quiensoy',     component: QuienSoyComponent },
+    { path: 'principal',    component: PrincipalComponent,          canActivate: [UrlAccessService] },
+    { path: 'jugadores',    component: JugadoresListadoComponent,   canActivate: [UrlAccessService] },
+    { path: 'mapa',         component: MapaDeGoogleComponent,       canActivate: [UrlAccessService] },
+    { path: 'listado',      component: ListadoComponent,            canActivate: [UrlAccessService] },
+    { path: 'paises',       component: ListadoDePaisesComponent,    canActivate: [UrlAccessService]  },
+    { path: 'juegos',       component: JuegosComponent,             canActivate: [UrlAccessService], children: [
+            { path: '',                     component: MenuCardComponent },
+            { path: 'adivina',              component: AdivinaElNumeroComponent },
+            { path: 'adivinaMasListado',    component: AdivinaMasListadoComponent },
+            { path: 'agilidad',             component: AgilidadAritmeticaComponent },
+            { path: 'agilidadaMasListado',  component: AgilidadMasListadoComponent },
+            { path: 'snake',                component: SnakeComponent },
+            { path: 'ppt',                  component: PptComponent },
+            { path: 'anagrama',             component: AnagramaComponent },
+            { path: 'tateti',               component: TatetiComponent },
         ]
     },
-    { path: 'error', component: ErrorComponent },
-    { path: '', component: PrincipalComponent },
-    { path: '**', component: ErrorComponent }
+    { path: 'error',        component: ErrorComponent },
+    { path: '',             component: PrincipalComponent,          canActivate: [UrlAccessService] },
+    { path: '**',           component: ErrorComponent }
 ];
 
 @NgModule({

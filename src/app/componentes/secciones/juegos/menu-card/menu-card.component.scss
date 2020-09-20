@@ -1,0 +1,52 @@
+@import "src/assets/scss/variables";
+:host {
+}
+.juegos {
+    display: flex;
+    flex-wrap: wrap;
+    // justify-content: space-between;
+}
+.card {
+    &.games {
+        width: 22%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        height: 100%;
+        padding: 10px;
+        margin: 10px;
+        background: $grey !important;
+        color: white;
+        // min-height: 400px;
+        min-width: 100px;
+
+        &.primary {
+            background: $primary !important;
+            // color: black;
+            // h5,p {
+            //     color: black;
+            // }
+            
+        }
+        @media screen and (max-width: $tablet-min-w) {
+            width: 30%;
+        }
+
+        @media screen and (max-width: $mobile-min-w) {
+            width: 100%;
+        }
+    }
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+img {
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+} /* Add some padding inside the card container */
+
+p {
+    a {
+        margin-right: 5px;
+    }
+}

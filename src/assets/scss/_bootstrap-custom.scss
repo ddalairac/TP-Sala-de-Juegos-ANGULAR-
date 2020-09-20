@@ -1,6 +1,7 @@
 @import "src/assets/scss/variables";
 .list-group-item{
     background-color: transparent !important;
+    border-color: $border-color!important;
 }
 .jumbotron{
     color: white;
@@ -9,4 +10,14 @@
 .table{
     background: $bg-color !important;
     color:white !important;
+}
+.was-validated .form-control:invalid,
+ .form-control.is-invalid{
+    border-width: medium;
+}
+
+.list-group{
+    background: $bg-color-transp;
+    padding: 10px 15px;
+    position: relative;
 }

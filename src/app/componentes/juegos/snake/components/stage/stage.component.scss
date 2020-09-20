@@ -1,3 +1,8 @@
 .stage{
     margin: 15px auto;
 }
+:host{
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
