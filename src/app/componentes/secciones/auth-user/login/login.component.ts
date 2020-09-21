@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { TimerObservable } from "rxjs/observable/TimerObservable";
-import { AuthService, eAuthEstado, iAuthError } from '../../../../servicios/auth.service';
+import { FireBaseService, eAuthEstado, iAuthError } from '../../../../servicios/firebase.service';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    constructor(private authService: AuthService, private router: Router) { }
+    constructor(private firebase: FireBaseService, private router: Router) { }
     usuario: string;
     clave: string;
     invalidUsuario: boolean
@@ -28,10 +28,10 @@ export class LoginComponent implements OnInit {
         this.errorMensaje = ""
         this.invalidUsuario = false
         this.invalidClave = false
-        let isvalid: eAuthEstado = this.authService.validarDatos(this.usuario, this.clave)
+        let isvalid: eAuthEstado = this.firebase.validarDatos(this.usuario, this.clave)
 
         if (isvalid == eAuthEstado.valid) {
-            this.authService.singIn(this.usuario, this.clave, this.rememberMe)
+            this.firebase.singIn(this.usuario, this.clave, this.rememberMe)
                 .then(res => {
                     this.router.navigateByUrl('principal');
                 }).catch((error: iAuthError) => {

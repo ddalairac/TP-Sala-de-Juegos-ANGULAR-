@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router, RouterStateSnapshot } from '@angular/router';
-import { AuthService } from './auth.service';
+import { FireBaseService } from './firebase.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UrlAccessService {
-    constructor(private router: Router,private authService: AuthService) { }
+    constructor(private router: Router,private firebase: FireBaseService) { }
     canActivate(state: RouterStateSnapshot): boolean {
         return this.checkRoute(state.url);
         // return true;
@@ -16,7 +16,7 @@ export class UrlAccessService {
         if (this.router.url === '/authuser') {
         // if (path === '/authuser') {
             return true;
-        } else if(this.authService.getUserCredential()){
+        } else if(this.firebase.getUserCredential()){
             return true;
         }
         this.router.navigate(['/authuser'])

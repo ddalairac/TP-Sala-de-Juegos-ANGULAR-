@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Subject } from 'rxjs';
-import { AuthService } from '../../../servicios/auth.service';
+import { FireBaseService } from '../../../servicios/firebase.service';
 
 @Component({
     selector: 'app-menu',
@@ -9,16 +9,16 @@ import { AuthService } from '../../../servicios/auth.service';
     styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-    public isLogged$: Subject<boolean> = this.authService.isLogged$;
-    constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router) { }
+    public isLogged$: Subject<boolean> = this.firebase.isLogged$;
+    constructor(private route: ActivatedRoute, private firebase: FireBaseService, private router: Router) { }
 
     ngOnInit() {
-        this.isLogged$ = this.authService.isLogged$;
+        this.isLogged$ = this.firebase.isLogged$;
     }
     goToSection(url) {
         this.router.navigateByUrl(url);
     }
     singOut(){
-        this.authService.singOut();
+        this.firebase.singOut();
     }
 }
