@@ -11,7 +11,7 @@ import { FireBaseService, eAuthEstado, iAuthError } from '../../../../servicios/
 })
 export class RegistroComponent implements OnInit {
 
-    constructor(private firebase: FireBaseService, private router: Router) { }
+    constructor(private firebaseservice: FireBaseService, private router: Router) { }
     usuario: string;
     clave: string;
     invalidUsuario: boolean
@@ -27,10 +27,10 @@ export class RegistroComponent implements OnInit {
         this.errorMensaje = ""
         this.invalidUsuario = false
         this.invalidClave = false
-        let isvalid: eAuthEstado = this.firebase.validarDatos(this.usuario, this.clave)
+        let isvalid: eAuthEstado = this.firebaseservice.validarDatos(this.usuario, this.clave)
 
         if (isvalid == eAuthEstado.valid) {
-            this.firebase.register(this.usuario, this.clave, this.rememberMe)
+            this.firebaseservice.register(this.usuario, this.clave, this.rememberMe)
                 .then(res => {
                     this.router.navigateByUrl('principal');
                 }).catch((error: iAuthError) => {

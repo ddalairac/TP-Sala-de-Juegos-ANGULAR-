@@ -59,8 +59,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
-import { ArchivosJugadoresService } from './servicios/venian/archivos-jugadores.service';
-import { JuegoServiceService } from './servicios/venian/juego-service.service';
+// import { ArchivosJugadoresService } from './servicios/venian/archivos-jugadores.service';
+// import { JuegoServiceService } from './servicios/venian/juego-service.service';
 import { JugadoresService } from './servicios/venian/jugadores.service';
 import { MiHttpService } from './servicios/venian/mi-http.service';
 import { PaisesService } from './servicios/venian/paises.service';
@@ -121,7 +121,8 @@ import { InterceptorService } from './servicios/interceptor.service';
         AngularFireAuthModule, // auth
         AngularFireStorageModule // storage
     ],
-    providers: [JuegoServiceService, MiHttpService, PaisesService, ArchivosJugadoresService, JugadoresService,
+    providers: [ MiHttpService, PaisesService,  JugadoresService,
+        // ArchivosJugadoresService,JuegoServiceService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: InterceptorService,

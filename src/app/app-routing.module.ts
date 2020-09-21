@@ -27,9 +27,9 @@ const MiRuteo = [
     { path: 'quiensoy',     component: QuienSoyComponent,           canActivate: [UrlAccessService] },
     { path: 'principal',    component: PrincipalComponent,          canActivate: [UrlAccessService] },
     { path: 'jugadores',    component: JugadoresListadoComponent,   canActivate: [UrlAccessService] },
-    { path: 'mapa',         component: MapaDeGoogleComponent,       canActivate: [UrlAccessService] },
-    { path: 'listado',      component: ListadoComponent,            canActivate: [UrlAccessService] },
-    { path: 'paises',       component: ListadoDePaisesComponent,    canActivate: [UrlAccessService] },
+    // { path: 'mapa',         component: MapaDeGoogleComponent,       canActivate: [UrlAccessService] },
+    // { path: 'listado',      component: ListadoComponent,            canActivate: [UrlAccessService] },
+    // { path: 'paises',       component: ListadoDePaisesComponent,    canActivate: [UrlAccessService] },
     { path: 'juegos',       component: JuegosComponent,             canActivate: [UrlAccessService], children: [
             { path: '',                     component: MenuCardComponent },
             { path: 'adivina',              component: AdivinaElNumeroComponent },

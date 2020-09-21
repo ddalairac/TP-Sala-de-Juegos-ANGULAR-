@@ -6,7 +6,7 @@ import { FireBaseService } from './firebase.service';
     providedIn: 'root'
 })
 export class UrlAccessService {
-    constructor(private router: Router,private firebase: FireBaseService) { }
+    constructor(private router: Router,private firebaseservice: FireBaseService) { }
     canActivate(state: RouterStateSnapshot): boolean {
         return this.checkRoute(state.url);
         // return true;
@@ -16,7 +16,7 @@ export class UrlAccessService {
         if (this.router.url === '/authuser') {
         // if (path === '/authuser') {
             return true;
-        } else if(this.firebase.getUserCredential()){
+        } else if(this.firebaseservice.getUserCredential()){
             return true;
         }
         this.router.navigate(['/authuser'])

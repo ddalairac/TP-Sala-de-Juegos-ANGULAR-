@@ -1,32 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-mapa-de-google',
-  templateUrl: './mapa-de-google.component.html',
-  styleUrls: ['./mapa-de-google.component.scss']
+    selector: 'app-mapa-de-google',
+    templateUrl: './mapa-de-google.component.html',
+    styleUrls: ['./mapa-de-google.component.scss']
 })
 export class MapaDeGoogleComponent implements OnInit {
-  title: string = 'El Primer mapa';
-  lat: number = 33.678418;
-  lng: number = 5.809007;
-   // google maps zoom level
-   zoom: number = 8;
-   
+    title: string = 'El Primer mapa';
+    lat: number = 33.678418;
+    lng: number = 5.809007;
+    // google maps zoom level
+    zoom: number = 8;
 
+    constructor() { }
 
+    ngOnInit() {
+    }
 
-  constructor() { }
-  
-  ngOnInit() {
-  }
-
-mapClicked(event:any){
-
-}
-  
-
-
-  
+    mapClicked(event: any) {
+    }
 
 }
 

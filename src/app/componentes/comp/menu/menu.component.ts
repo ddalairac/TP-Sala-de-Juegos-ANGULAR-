@@ -9,16 +9,17 @@ import { FireBaseService } from '../../../servicios/firebase.service';
     styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-    public isLogged$: Subject<boolean> = this.firebase.isLogged$;
-    constructor(private route: ActivatedRoute, private firebase: FireBaseService, private router: Router) { }
+    constructor(private route: ActivatedRoute, private firebaseservice: FireBaseService, private router: Router) {}
+
+    public isLogged$: Subject<boolean>;
 
     ngOnInit() {
-        this.isLogged$ = this.firebase.isLogged$;
+        this.isLogged$ = this.firebaseservice.isLogged$;
     }
     goToSection(url) {
         this.router.navigateByUrl(url);
     }
     singOut(){
-        this.firebase.singOut();
+        this.firebaseservice.singOut();
     }
 }

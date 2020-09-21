@@ -9,7 +9,7 @@ import { FireBaseService, eAuthEstado, iAuthError } from '../../../../servicios/
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    constructor(private firebase: FireBaseService, private router: Router) { }
+    constructor(private firebaseservice: FireBaseService, private router: Router) { }
     usuario: string;
     clave: string;
     invalidUsuario: boolean
@@ -28,12 +28,13 @@ export class LoginComponent implements OnInit {
         this.errorMensaje = ""
         this.invalidUsuario = false
         this.invalidClave = false
-        let isvalid: eAuthEstado = this.firebase.validarDatos(this.usuario, this.clave)
+        let isvalid: eAuthEstado = this.firebaseservice.validarDatos(this.usuario, this.clave)
 
         if (isvalid == eAuthEstado.valid) {
-            this.firebase.singIn(this.usuario, this.clave, this.rememberMe)
+            this.firebaseservice.singIn(this.usuario, this.clave, this.rememberMe)
                 .then(res => {
-                    this.router.navigateByUrl('principal');
+                    // this.router.navigateByUrl('principal');
+                    this.router.navigateByUrl('jugadores');
                 }).catch((error: iAuthError) => {
                     console.log("Error Login:", error)
                     this.errorMensaje = error.message

@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, DocumentChangeAction, DocumentReference, DocumentSnapshot } from '@angular/fire/firestore';
+import { Action, AngularFirestore, DocumentChangeAction, DocumentReference, DocumentSnapshot } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { Subject } from 'rxjs/internal/Subject';
@@ -24,12 +24,12 @@ export class FireBaseService {
     private UserCredential: firebase.auth.UserCredential
 
     isLogged$ = new Subject<boolean>();
-    isIn() {
-        this.isLogged$.next(true);
-    }
-    isOut() {
-        this.isLogged$.next(false);
-    }
+    // isIn() {
+    //     this.isLogged$.next(true);
+    // }
+    // isOut() {
+    //     this.isLogged$.next(false);
+    // }
 
     public async register(usuario, clave, rememberMe) {
         this.loader.show();
@@ -105,7 +105,6 @@ export class FireBaseService {
         return eAuthEstado.valid
     }
 
-
     private async persistAuthOutData() {
         let usuario = this.user;
         await this.create(eCollections.usersLog, { user: usuario, type: "logOut", timestamp: new Date() })
@@ -149,29 +148,43 @@ export class FireBaseService {
         this.loader.hide();
         return res;
     }
-    public readAll(collection: eCollections): Observable<DocumentChangeAction<unknown>[]> {
+    public readAll(collection: eCollections):any[] | any{
         this.loader.show();
-        return this.firestore.collection(collection).snapshotChanges().pipe(
+        let list = [];
+        return this.firestore.collection(collection).get().subscribe(
+            querySnapshot=>{
+                querySnapshot.forEach(doc=>{
+                    list.push(doc.data());
+                })
+                console.log("Listado:",list)
+                return list
+            },
+            error=>{
+                console.log("Error Listado:",error,list)
+                throw error;
+            }
+        )
+        // pipe(
+        //     tap((data) => {
+        //         console.log("readAll: ", data);
+        //         this.loader.hide();
+        //     }),
+        //     catchError(this.handleError)
+        // );
+
+    }
+    // public readOne(collection: eCollections, id: string): Observable<Action<DocumentSnapshot<unknown>>> {
+    public readOne(collection: eCollections, id: string): Observable<firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData>> {
+        this.loader.show();
+        return this.firestore.collection(collection).doc(id).get()
+        .pipe(
             tap((data) => {
-                console.log("readAll: ", data);
+                console.log("readOne: ", data);
                 this.loader.hide();
             }),
             catchError(this.handleError)
-        );
-
+        )
     }
-    // public async readAll(collection: eCollections): Promise<DocumentChangeAction<unknown>[]> {
-    //     this.loader.show();
-    //     let res = await this.firestore.collection(collection).snapshotChanges().toPromise();
-    //     this.loader.hide();
-    //     return res;
-    // }
-    // public async readOne(collection: eCollections, id: string): Observable<Action<DocumentSnapshot<unknown>>> {
-    //     this.loader.show();
-    //     let res =  await this.firestore.collection(collection).doc(id).snapshotChanges();
-    //     this.loader.hide();
-    //     return res;
-    // }
     public async update(collection: eCollections, id: string, data: any): Promise<void> {
         this.loader.show();
         let res = await this.firestore.collection(collection).doc(id).set(Object.assign({}, data));
