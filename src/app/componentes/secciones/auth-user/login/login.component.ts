@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { eAuthEstado, iAuthError } from '../../../../clases/firebase.model';
+import { FbAuthService } from '../../../../servicios/fb-auth.service';
 
-import { TimerObservable } from "rxjs/observable/TimerObservable";
-import { FireBaseService, eAuthEstado, iAuthError } from '../../../../servicios/firebase.service';
+// import { TimerObservable } from "rxjs/observable/TimerObservable";
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    constructor(private firebaseservice: FireBaseService, private router: Router) { }
+    constructor(private fbauthservice: FbAuthService, private router: Router) { }
     usuario: string;
     clave: string;
     invalidUsuario: boolean
@@ -28,10 +29,10 @@ export class LoginComponent implements OnInit {
         this.errorMensaje = ""
         this.invalidUsuario = false
         this.invalidClave = false
-        let isvalid: eAuthEstado = this.firebaseservice.validarDatos(this.usuario, this.clave)
+        let isvalid: eAuthEstado = this.fbauthservice.validarDatos(this.usuario, this.clave)
 
         if (isvalid == eAuthEstado.valid) {
-            this.firebaseservice.singIn(this.usuario, this.clave, this.rememberMe)
+            this.fbauthservice.singIn(this.usuario, this.clave, this.rememberMe)
                 .then(res => {
                     // this.router.navigateByUrl('principal');
                     this.router.navigateByUrl('jugadores');

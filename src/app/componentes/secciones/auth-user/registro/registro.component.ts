@@ -1,7 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FireBaseService, eAuthEstado, iAuthError } from '../../../../servicios/firebase.service';
+import { eAuthEstado, iAuthError } from '../../../../clases/firebase.model';
+import { FbAuthService } from '../../../../servicios/fb-auth.service';
 //para poder hacer las validaciones
 //import { Validators, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 @Component({
@@ -11,7 +12,7 @@ import { FireBaseService, eAuthEstado, iAuthError } from '../../../../servicios/
 })
 export class RegistroComponent implements OnInit {
 
-    constructor(private firebaseservice: FireBaseService, private router: Router) { }
+    constructor(private fbauthservice: FbAuthService, private router: Router) { }
     usuario: string;
     clave: string;
     invalidUsuario: boolean
@@ -27,10 +28,10 @@ export class RegistroComponent implements OnInit {
         this.errorMensaje = ""
         this.invalidUsuario = false
         this.invalidClave = false
-        let isvalid: eAuthEstado = this.firebaseservice.validarDatos(this.usuario, this.clave)
+        let isvalid: eAuthEstado = this.fbauthservice.validarDatos(this.usuario, this.clave)
 
         if (isvalid == eAuthEstado.valid) {
-            this.firebaseservice.register(this.usuario, this.clave, this.rememberMe)
+            this.fbauthservice.register(this.usuario, this.clave, this.rememberMe)
                 .then(res => {
                     this.router.navigateByUrl('principal');
                 }).catch((error: iAuthError) => {

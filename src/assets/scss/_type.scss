@@ -67,7 +67,7 @@ a{
     color:$tertiary!important;
 }
 
-
+pre,
 p,
 ol,
 ul,
@@ -80,7 +80,7 @@ dt,
 dd {
   font-size: 14px; //$font-size-base !important;
   font-weight: 300;
-  color: white;
+  color: white!important;
 }
 
 dt {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { eCollections, FireBaseService } from '../../../servicios/firebase.service';
+import { eCollections } from '../../../clases/firebase.model';
+import { FbStorageService } from '../../../servicios/fb-storage.service';
 import { eGame, JugadoresService } from '../../../servicios/venian/jugadores.service';
 @Component({
     selector: 'app-jugadores-listado',
@@ -12,20 +13,25 @@ export class JugadoresListadoComponent implements OnInit {
     miJugadoresServicio: JugadoresService
 
     constructor(
-        private firebaseservice:FireBaseService,
+        private fbsorageservice: FbStorageService,
         private serviceJugadores: JugadoresService
-        ) {
+    ) {
         // this.miJugadoresServicio = serviceJugadores;
 
     }
-    list: any[]
+    list: any[] = []
     public getPlayers() {
-        this.list = this.firebaseservice.readAll(eCollections.scores)
+        this.fbsorageservice.readAll(eCollections.scores).then(
+            (data) => {
+                this.list = data
+                console.log("Jugadores:", this.list)
+            }
+        )
     }
     ngOnInit() {
         this.getPlayers();
-        this.serviceJugadores.setPlayerScore(eGame.ppt,100)
-        
+        // this.serviceJugadores.setPlayerScore(eGame.ppt,100)
+
     }
 
     // TraerTodos() {
