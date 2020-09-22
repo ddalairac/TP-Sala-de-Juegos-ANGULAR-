@@ -12,8 +12,8 @@ export class JugadoresService {
         private fbstorageservice: FbStorageService
     ) {
     }
-    
-    public async getPlayers():Promise<any> {
+
+    public async getPlayers(): Promise<any> {
         return this.fbstorageservice.readAll(eCollections.usersLog)
         // .subscribe(
         //     data => {
@@ -26,16 +26,19 @@ export class JugadoresService {
     }
     public setPlayerScore(game: eGame, score: number) {
         let user = this.fbauthgeservice.getUserId()
-        this.fbstorageservice.readOne(eCollections.scores,user)
-        // .subscribe(
-        //     data=>{
-        //         console.log("readOne: ",data)
-        //     },
-        //     error=>{
-        //         console.log("ERROR readOne: ",error)
-        //     }
-        // )
-        this.fbstorageservice.createFromUserId(eCollections.scores, user, new PlayerScore(user, null, 100, null, null, null, null));
+        console.log("setPlayerScore:",{ user: user, game: game, score: score })
+        let UserScores: PlayerScore
+        this.fbstorageservice.readOne(eCollections.scores, user).then(
+            (data: PlayerScore) => {
+                if (data) {
+                    UserScores = data
+                } else {
+                    UserScores = new PlayerScore(user);
+                }
+                UserScores[game] = score
+                console.log("createFromUserId UserScores:", UserScores)
+                this.fbstorageservice.createFromUserId(eCollections.scores, user, UserScores);
+            })
     }
 
 
@@ -43,13 +46,13 @@ export class JugadoresService {
 }
 export class PlayerScore {
     constructor(
-        user: string,
-        snake: number | null,
-        aritmetica: number | null,
-        ppt: number | null,
-        adivina_numero: number | null,
-        tateti: number | null,
-        anagrama: number | null) {
+        user: string = '',
+        snake: number = 0,
+        aritmetica: number = 0,
+        ppt: number = 0,
+        adivina_numero: number = 0,
+        tateti: number = 0,
+        anagrama: number = 0) {
         this.user = user
         this.snake = snake;
         this.aritmetica = aritmetica;
@@ -59,12 +62,12 @@ export class PlayerScore {
         this.anagrama = anagrama;
     }
     user: string;
-    snake: number | null;
-    aritmetica: number | null;
-    ppt: number | null;
-    adivina_numero: number | null;
-    tateti: number | null;
-    anagrama: number | null;
+    snake: number;
+    aritmetica: number;
+    ppt: number;
+    adivina_numero: number;
+    tateti: number;
+    anagrama: number;
 }
 export enum eGame {
     snake = "snake",

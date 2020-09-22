@@ -1,7 +1,8 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable, Output } from "@angular/core";
 import { SnakeModel } from "../model/skake.class";
 import { MoveOpt } from "../model/move-options.enum";
 import { AppleModel } from "../model/apple.class";
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: "root"
@@ -28,7 +29,15 @@ export class GameService {
   public get stageWidth() {
     return this._stageWidth;
   }
-
+  public gameOver$:Subject<boolean>  = new Subject<boolean>();
+  
+  public reset(){
+    this.gameOver$.next(false);
+    this.stageSlots = []
+    this.snakeLinks = []
+    this.apples = []
+    clearInterval(this._interval);
+  }
   public createStage() {
     this.stageSlots = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -40,6 +49,7 @@ export class GameService {
     this._appleApearIteration = 10;
   }
   public starGame() {
+    this.gameOver$.next(false);
     this._snakeHeadMov = MoveOpt.ArrowRight;
     this._snakeMovQueue.push(MoveOpt.ArrowRight);
     // this.snakeLinks.push(new SnakeModel(90, 0)); //! borrar
@@ -200,7 +210,8 @@ export class GameService {
       }
       clearInterval(this._interval);
 
-      alert("GAME OVER!");
+    //   alert("GAME OVER!");
+      this.gameOver$.next(true);
     }
     return dead;
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { eCollections } from '../../../clases/firebase.model';
 import { FbStorageService } from '../../../servicios/fb-storage.service';
-import { eGame, JugadoresService } from '../../../servicios/venian/jugadores.service';
+import { eGame, JugadoresService, PlayerScore } from '../../../servicios/venian/jugadores.service';
 @Component({
     selector: 'app-jugadores-listado',
     templateUrl: './jugadores-listado.component.html',
@@ -15,16 +15,16 @@ export class JugadoresListadoComponent implements OnInit {
     constructor(
         private fbsorageservice: FbStorageService,
         private serviceJugadores: JugadoresService
-    ) {
-        // this.miJugadoresServicio = serviceJugadores;
+    ) { }
+    dataSource: PlayerScore[] = []
 
-    }
-    list: any[] = []
+    displayedColumns: string[] = ["user", "snake", "aritmetica", "ppt", "adivina_numero", "tateti", "anagrama"];
+
     public getPlayers() {
         this.fbsorageservice.readAll(eCollections.scores).then(
             (data) => {
-                this.list = data
-                console.log("Jugadores:", this.list)
+                this.dataSource = data
+                console.log("Jugadores:", this.dataSource)
             }
         )
     }
@@ -33,6 +33,23 @@ export class JugadoresListadoComponent implements OnInit {
         // this.serviceJugadores.setPlayerScore(eGame.ppt,100)
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // TraerTodos() {
     //     //alert("totos");

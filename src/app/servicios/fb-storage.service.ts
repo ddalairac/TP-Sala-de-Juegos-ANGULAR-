@@ -75,6 +75,7 @@ export class FbStorageService {
                 } else {
                     // doc.data() will be undefined in this case
                     console.log("No such document!");
+                    return false
                 }
                 this.loader.hide();
             }).catch((error)=> {
