@@ -4,6 +4,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Subscription } from "rxjs";
 import { TimerObservable } from "rxjs/observable/TimerObservable";
 import { JuegoAgilidad } from '../../../clases/juego-agilidad';
+import { eGame, JugadoresService } from '../../../servicios/venian/jugadores.service';
 @Component({
     selector: 'app-agilidad-aritmetica',
     templateUrl: './agilidad-aritmetica.component.html',
@@ -18,13 +19,15 @@ export class AgilidadAritmeticaComponent implements OnInit {
     segundoNumero: number;
     operadorElegido: string;
     // operadores = ['+', '-', '/', '*'];
-    operadores = ['+', '-', '*'];
+    operadores = ['+', '-','/', '*'];
     operacionRandomAritmeticaRealizada: number;
+    score: number;
+    gameOver = false
 
     ngOnInit() {
     }
 
-    constructor() {
+    constructor(private jugadores: JugadoresService) {
         this.ocultarVerificar = true;
         this.tiempo = 5;
         this.nuevoJuego = new JuegoAgilidad();
@@ -32,6 +35,8 @@ export class AgilidadAritmeticaComponent implements OnInit {
     }
 
     onNuevoJuego() {
+        this.gameOver = false
+        this.score = 100
         this.inicializarOperadoresYOperandos(); //Genero 2 numeros y operando random
         this.realizarOperacionAritmeticaSecreta(); //hago la operacion aritmetica
 
@@ -42,17 +47,22 @@ export class AgilidadAritmeticaComponent implements OnInit {
             if (this.tiempo == 0) {//Si llega a 0 verifico
                 this.verificar(); //Verifico si lo q estaba puesto por el user estaba ok
             }
+
         }, 900);
     }
 
     verificar() {
         this.reiniciarTemporizadorYOcultoBotones();
+        this.gameOver = true
         if (this.nuevoJuego.numeroIngresado == this.operacionRandomAritmeticaRealizada) {
             this.nuevoJuego.gano = true;
-            alert('GANO');
+            // alert('GANO');
+            this.score = this.score - this.tiempo * 15;
+            this.jugadores.setPlayerScore(eGame.aritmetica, this.score)
         } else {
             this.nuevoJuego.gano = false;
-            alert('PERDIO');
+            this.score = 0;
+            // alert('PERDIO');
         }
     }
 
@@ -76,9 +86,9 @@ export class AgilidadAritmeticaComponent implements OnInit {
             case '-':
                 this.operacionRandomAritmeticaRealizada = this.primerNumero - this.segundoNumero
                 break;
-            // case '/':
-            //   this.operacionRandomAritmeticaRealizada = +(this.primerNumero / this.segundoNumero).toFixed(2)
-            //   break;
+            case '/':
+              this.operacionRandomAritmeticaRealizada = +(this.primerNumero / this.segundoNumero).toFixed(2)
+              break;
             case '*':
                 this.operacionRandomAritmeticaRealizada = this.primerNumero * this.segundoNumero;
                 break;

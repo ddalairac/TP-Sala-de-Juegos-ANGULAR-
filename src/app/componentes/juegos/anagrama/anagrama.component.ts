@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JugadoresService, eGame } from '../../../servicios/venian/jugadores.service';
 
 @Component({
     selector: 'app-anagrama',
@@ -32,12 +33,15 @@ export class AnagramaComponent implements OnInit {
     gano: boolean;
     temporizador: any;
     tiempo: any = 3;
-
-    constructor() { }
+    score:number
+    secondGame:boolean
+    constructor(private jugadores: JugadoresService) { }
 
 
 
     nuevoJuego() {
+        this.secondGame = true
+        this.score = 100
         this.gano = false;
         this.palabraSecreta = this.palabrasParaAdivinar[Math.floor(Math.random() * this.palabrasParaAdivinar.length + 1)];
 
@@ -54,10 +58,12 @@ export class AnagramaComponent implements OnInit {
     verificar() {
         if (this.palabraIngresada.toLowerCase() == this.palabraSecreta.toLowerCase()) {
             this.gano = true;
+            this.jugadores.setPlayerScore(eGame.anagrama, this.score)
         } else {
             this.mensajeAlUsuario = true;
             this.temporizador = setInterval(() => {//Comienza a correr el tiempo
                 this.tiempo--;
+                this.score = (this.score - 15 > 0) ? this.score : 0 
                 console.log("tiempo: ", this.tiempo);
                 if (this.tiempo == 0) {
                     clearInterval(this.temporizador);//Borro el contador

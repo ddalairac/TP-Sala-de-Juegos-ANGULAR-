@@ -1,44 +1,50 @@
 <app-go-back title="Agilidad aritmética"></app-go-back>
 
 <ul class="list-group text-center">
-    <li class="list-group-item ">
-        Primer número:
-        <input [(ngModel)]="primerNumero" name="PrimerNumero" type="text" class="form-control" readonly />
+    <li class="list-group-item " *ngIf="ocultarVerificar">
+        <div class="game-over" *ngIf="gameOver">
+            <h2>Game over</h2>
+            <h3 *ngIf="score">Ganaste</h3>
+            <p>Resultado: {{operacionRandomAritmeticaRealizada}}</p>
+            <h1>Puntaje {{score}}</h1>
+        </div>
+        <button (click)="onNuevoJuego()"  mat-raised-button color="secondary">
+            Comenzar Nuevo Juego
+        </button>
     </li>
-    <li class="list-group-item ">
-        Operador:
-        <input [(ngModel)]="operadorElegido" name="OperadorElegido" type="text" class="form-control" readonly />
+    <ng-container *ngIf="!ocultarVerificar">
+        <li class="list-group-item ">
+            Primer número:
+            <input [(ngModel)]="primerNumero" name="PrimerNumero" type="text" class="form-control" readonly />
+        </li>
+        <li class="list-group-item ">
+            Operador:
+            <input [(ngModel)]="operadorElegido" name="OperadorElegido" type="text" class="form-control" readonly />
 
-    </li>
-    <li class="list-group-item ">
-        Segundo número:
-        <input [(ngModel)]="segundoNumero" name="SegundoNumero" type="text" class="form-control" readonly />
-    </li>
-    <li class="list-group-item ">
-        Respuesta:
-        <input placeholder="Ingrese numero" name="numeroIngresado" type="text" class="form-control" autocomplete="off"
-            [(ngModel)]="nuevoJuego.numeroIngresado" />
-    </li>
-    <li [hidden]="ocultarVerificar" class="list-group-item ">
-        <h2>
-            <button (click)="verificar()" class="btn btn-success btn-lg">
-                Verificar {{tiempo}}
-            </button>
-        </h2>
-    </li>
-    <li [hidden]="!ocultarVerificar" class="list-group-item ">
-        <h2>
-            <button (click)="onNuevoJuego()" class="btn btn-info btn-lg">
-                Comenzar Nuevo Juego
-            </button>
-        </h2>
-    </li>
-    <li [hidden]="ocultarVerificar" class="list-group-item ">
-        <h2>
-            <p>
-                <i class="fa fa-spinner fa-spin"></i>
-                Esperando resultado..
-            </p>
-        </h2>
-    </li>
+        </li>
+        <li class="list-group-item ">
+            Segundo número:
+            <input [(ngModel)]="segundoNumero" name="SegundoNumero" type="text" class="form-control" readonly />
+        </li>
+        <li class="list-group-item ">
+            Respuesta:
+            <input placeholder="Ingrese numero" name="numeroIngresado" type="text" class="form-control" autocomplete="off"
+                [(ngModel)]="nuevoJuego.numeroIngresado" />
+        </li>
+        <li class="list-group-item ">
+            <h2>
+                <button (click)="verificar()"  mat-raised-button color="secondary">
+                    Verificar {{tiempo}}
+                </button>
+            </h2>
+        </li>
+        <li class="list-group-item ">
+            <h2>
+                <p>
+                    <i class="fa fa-spinner fa-spin"></i>
+                    Esperando resultado..
+                </p>
+            </h2>
+        </li>
+    </ng-container>
 </ul>

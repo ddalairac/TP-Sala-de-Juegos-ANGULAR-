@@ -1,34 +1,42 @@
 <app-go-back title="Piedra papel o tijera"></app-go-back>
 <ul class="list-group text-center">
     <li class="list-group-item ">
-        
-        <div class="row">
-            <div class="col text-center">
-                <div id="user-label">Elegiste: {{eleccionUsuario | uppercase}}</div><br>
-            </div>
-            <div class="col text-center">
-                <div id="comp-label">Computadora : {{eleccionPC | uppercase}}</div>
-            </div>
+        <!--  -->
+        <div class="game-over" *ngIf="gameOver">
+            <h2>Game over</h2>
+            <h3 *ngIf="score">{{estadoPartida}}</h3>
+            <h1>Puntaje {{score}}</h1>
+            <button type="button" mat-raised-button color="secondary" (click)="newGame()">Jugar de nuevo</button>
         </div>
+        <div *ngIf="!gameOver">
+            <div class="row">
+                <div class="col text-center">
+                    <div id="user-label">Elegiste: {{eleccionUsuario | uppercase}}</div><br>
+                </div>
+                <div class="col text-center">
+                    <div id="comp-label">Computadora : {{eleccionPC | uppercase}}</div>
+                </div>
+            </div>
 
 
-        <div class="result">
-            <p *ngIf="estadoPartida">{{eleccionUsuario | uppercase}} {{resultadoFinal}} {{eleccionPC | uppercase}}
-                {{estadoPartida}} </p>
+            <div class="result">
+                <p *ngIf="estadoPartida">{{eleccionUsuario | uppercase}} {{resultadoFinal}} {{eleccionPC | uppercase}}
+                    {{estadoPartida}} </p>
+            </div>
+
+            <div class="choices">
+                <div class="choice" id="piedra">
+                    <img src="../../../assets/imagenes/new/piedra.png" (click)='userPick("Piedra")'>
+                </div>
+                <div class="choice" id="papel">
+                    <img src="../../../assets/imagenes/new/papel.png" (click)='userPick("Papel")'>
+                </div>
+                <div class="choice" id="tijera">
+                    <img src="../../../assets/imagenes/new/tijera.png" (click)='userPick("Tijera")'>
+                </div>
+            </div>
+
+            <p id="action-message" *ngIf="!estadoPartida">Podes elegir</p>
         </div>
-
-        <div class="choices">
-            <div class="choice" id="piedra">
-                <img src="../../../assets/imagenes/new/piedra.png" (click)='userPick("piedra")'>
-            </div>
-            <div class="choice" id="papel">
-                <img src="../../../assets/imagenes/new/papel.png" (click)='userPick("papel")'>
-            </div>
-            <div class="choice" id="tijera">
-                <img src="../../../assets/imagenes/new/tijera.png" (click)='userPick("tijera")'>
-            </div>
-        </div>
-
-        <p id="action-message" *ngIf="!estadoPartida">Podes elegir</p>
     </li>
 </ul>

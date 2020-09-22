@@ -1,7 +1,6 @@
 <app-go-back title="Adivina el numero (de 1 a 1000)"></app-go-back>
 <ul class="list-group text-center">
     <li class="list-group-item ">
-
         <div *ngIf="nuevoJuego.numeroSecreto!=0">
             <div class="form-group centered">
                 <input type="text" [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="Ingrese numero" name="numeroIngresado" type="number"
@@ -9,41 +8,20 @@
             </div>
         </div>
 
-        <button *ngIf="nuevoJuego.numeroSecreto==0" (click)="generarnumero()" mat-raised-button color="secondary">
-            Jugar
-        </button>
+        <button *ngIf="nuevoJuego.numeroSecreto==0" (click)="generarnumero()" mat-raised-button color="secondary">Jugar</button>
 
         <div class="row ">
-            <div class="col-md-8">
-                <p class="text-center" *ngIf="nuevoJuego.numeroIngresado">{{'Numero ingresado: ' + nuevoJuego.numeroIngresado}} </p>
-            </div>
-
-            <div class="col-md-4">
-                <h2 class="text-center" [hidden]="ocultarVerificar">
-                    <button *ngIf="nuevoJuego.numeroSecreto!=0" (click)="verificar()" mat-raised-button color="secondary">
-                        Verificar
-                    </button>
-                </h2>
+            <div class="col-md-12" >
+                <button *ngIf="nuevoJuego.numeroSecreto!=0" (click)="verificar()" mat-raised-button color="secondary" [disabled]="ocultarVerificar"> Verificar </button>
             </div>
         </div>
 
-
-        <div class="row ">
-            <div class="col-md-6">
-                <h2 class="text-center">
-                    <p *ngIf="nuevoJuego.numeroSecreto!=0"><i class="fa fa-spinner fa-spin"></i>Esperando que ingrese un número</p>
-                </h2>
-            </div>
-        </div>
-
-        <div *ngIf="nuevoJuego.gano">
+        <div *ngIf="nuevoJuego.gano" class="game-over">
+            <h2>Game over</h2>
             <h3>Ganaste!!</h3>
+            <p class="text-center" *ngIf="nuevoJuego.numeroIngresado">{{'Numero ingresado: ' + nuevoJuego.numeroIngresado}} </p>
+            <h1>Puntaje {{score}}</h1>
         </div>
-        <div class="row" *ngIf="nuevoJuego.numeroSecreto!=0">
-            <div class="col-md-8">
-                <h3>Todavia no ganaste !</h3>
-            </div>
-        </div>
-        <div class="text-center {mensajeClass}" id="snackbar">{{Mensajes}}</div>
+        <div class="text-center {{mensajeClass}}" id="snackbar" *ngIf="ocultarVerificar && mensajeClass">{{Mensajes}}</div>
     </li>
 </ul>

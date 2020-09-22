@@ -1,6 +1,7 @@
 
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { JuegoAdivina } from '../../../clases/juego-adivina'
+import { eGame, JugadoresService } from '../../../servicios/venian/jugadores.service';
 
 @Component({
     selector: 'app-adivina-el-numero',
@@ -15,8 +16,9 @@ export class AdivinaElNumeroComponent implements OnInit {
     contador: number;
     ocultarVerificar: boolean;
     mensajeClass: string;
+    score: number;
 
-    constructor() {
+    constructor(private jugadores: JugadoresService) {
         this.nuevoJuego = new JuegoAdivina();
         console.info("numero Secreto:", this.nuevoJuego.numeroSecreto);
         this.ocultarVerificar = false;
@@ -24,6 +26,7 @@ export class AdivinaElNumeroComponent implements OnInit {
     generarnumero() {
         this.nuevoJuego.generarnumero();
         this.contador = 0;
+        this.score = 100;
     }
     verificar() {
         this.contador++;
@@ -35,8 +38,11 @@ export class AdivinaElNumeroComponent implements OnInit {
             this.MostrarMensaje("Sos un Genio!!!", true);
             this.nuevoJuego.numeroSecreto = 0;
 
-        } else {
+            this.jugadores.setPlayerScore(eGame.adivina_numero, this.score)
 
+        } else {
+            this.score = (this.score - this.contador * 10 > 0) ? this.score - this.contador * 10 : 0;
+            
             let mensaje: string;
             switch (this.contador) {
                 case 1:
@@ -71,7 +77,7 @@ export class AdivinaElNumeroComponent implements OnInit {
 
     MostrarMensaje(mensaje: string, ganador: boolean = false) {
         this.Mensajes = mensaje;
-        console.log("contador:",this.contador)
+        console.log("contador:", this.contador)
         if (ganador) {
             this.mensajeClass = 'bg-success';
         } else {
