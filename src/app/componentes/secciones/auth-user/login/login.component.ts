@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
         if (isvalid == eAuthEstado.valid) {
             this.fbauthservice.singIn(this.usuario, this.clave, this.rememberMe)
                 .then(res => {
-                    // this.router.navigateByUrl('principal');
-                    this.router.navigateByUrl('juegos');
+                    this.router.navigateByUrl('principal');
+                    // this.router.navigateByUrl('juegos');
                 }).catch((error: iAuthError) => {
                     console.log("Error Login:", error)
                     this.errorMensaje = error.message
