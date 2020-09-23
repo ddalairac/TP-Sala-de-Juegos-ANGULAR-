@@ -41,14 +41,9 @@ export class TatetiComponent implements OnInit {
     ];
     isPlaying:boolean
 
-    //* Injecting ScoreService
-    constructor(private scoreService: TatetiService, private jugadores: JugadoresService) { }
+    constructor( private jugadores: JugadoresService) { }
 
     ngOnInit() {
-        // // Intializing the Game
-        // this.newGame();
-        // this.playerXwins = 0;
-        // this.playerOwins = 0;
     }
 
     newGame() {
@@ -71,26 +66,13 @@ export class TatetiComponent implements OnInit {
         if (this.squares[index] == null) {
             if (!this.winner) {
                 this.disable = true
-                //* Checks whether square is empty
                 if (this.squares[index] === null) {
-                    //* Replaces empty square with playerMarker
                     this.squares.splice(index, 1, { player: this.playerMarker, win: false });
-                    //* Switches turn
                     this.playerTurn = !this.playerTurn;
                 }
-                //* Check for Winner
                 this.winner = this.isWinner();
-                if (this.winner === "X") {
-                    this.playerXwins += 1;
-                } else if (this.winner === "O") {
-                    this.playerOwins += 1;
-                }
-                //* Check for Tie
                 this.isDraw = this.checkTie();
 
-                // this.scoreService.publish(
-                //     new ScoreSheet(this.playerXwins, this.playerOwins)
-                // );
                 if (!this.playerTurn && this.squares.some(scuare => scuare == null)) {
                     setTimeout(() => {
                         this.PCRandomMove();
@@ -107,12 +89,14 @@ export class TatetiComponent implements OnInit {
         if (this.isDraw) {
             this.score = 50;
         } else if (this.winner) {
-            if (this.playerXwins) {
+            if (this.winner === "X") {
                 this.score = 100;
-            } else {
+            } 
+            if(this.winner === "O") {
                 this.score = 0;
             }
         }
+        console.log(this.isDraw , this.winner)
         if (this.isDraw || this.winner) {
             this.isPlaying = false;
             this.jugadores.setPlayerScore(eGame.tateti, this.score)

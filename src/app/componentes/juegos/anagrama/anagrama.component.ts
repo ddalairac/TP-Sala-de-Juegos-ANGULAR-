@@ -61,9 +61,10 @@ export class AnagramaComponent implements OnInit {
             this.jugadores.setPlayerScore(eGame.anagrama, this.score)
         } else {
             this.mensajeAlUsuario = true;
+            this.score = (this.score - 15 > 0) ? this.score - 15 : 0 
+            console.log("score",this.score)
             this.temporizador = setInterval(() => {//Comienza a correr el tiempo
                 this.tiempo--;
-                this.score = (this.score - 15 > 0) ? this.score : 0 
                 console.log("tiempo: ", this.tiempo);
                 if (this.tiempo == 0) {
                     clearInterval(this.temporizador);//Borro el contador
