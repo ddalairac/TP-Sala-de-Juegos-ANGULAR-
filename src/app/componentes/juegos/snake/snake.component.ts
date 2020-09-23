@@ -23,15 +23,6 @@ export class SnakeComponent implements OnInit {
         this.isPaying = false;
         this.jugadores.setPlayerScore(eGame.snake,this.score)
     }
-    perderTestSnake(){
-        this.jugadores.setPlayerScore(eGame.snake,120)
-    }
-    perderTestAritmetica(){
-        this.jugadores.setPlayerScore(eGame.aritmetica,45)
-    }
-    perderTestPPT(){
-        this.jugadores.setPlayerScore(eGame.ppt,50)
-    }
     onPlay(){
         this.isPaying = true;
     }

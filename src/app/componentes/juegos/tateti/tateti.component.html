@@ -1,35 +1,42 @@
 <app-go-back title="Tateti"></app-go-back>
 <ul class="list-group text-center">
     <li class="list-group-item ">
-        <div class="pt-1 text-center" fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center center" fxLayoutGap="20px">
-            <div class="game-info" fxFlex="1 1 50%">
 
-                <h3 *ngIf="!winner && !isDraw" class="subtitle">
-                    Turno del jugador
-                    <span [ngClass]="{
+        <div class="game-over" *ngIf="winner || isDraw">
+            <h2>Game over</h2>
+            <h3 *ngIf="winner" >
+                El jugador
+                <span [ngClass]="{
+                    'player-x': winner === 'X',
+                    'player-o': winner === 'O'
+                    }">{{ winner }}</span>
+                gano el juego!
+            </h3>
+            <h3 *ngIf="isDraw" >Empate!</h3>
+            <h1>Puntaje {{score}}</h1>
+        </div>
+
+        <button mat-raised-button color="secondary" (click)="newGame()" *ngIf="!isPlaying">Jugar</button>
+
+        <div *ngIf="isPlaying">
+            <div class="pt-1 text-center" fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center center" fxLayoutGap="20px">
+                <div class="game-info" fxFlex="1 1 50%">
+                    <h3 *ngIf="!winner && !isDraw" class="subtitle">
+                        Turno del jugador
+                        <span [ngClass]="{
                         'player-x': playerMarker === 'X',
                         'player-o': playerMarker === 'O'
                         }">{{ playerMarker }}</span>
-                </h3>
+                    </h3>
 
-                <h3 *ngIf="winner" class="subtitle">
-                    El jugador
-                    <span [ngClass]="{
-                        'player-x': winner === 'X',
-                        'player-o': winner === 'O'
-                        }">{{ winner }}</span>
-                    gano el juego!
-                </h3>
+                </div>
 
-                <h3 *ngIf="isDraw" class="subtitle">Empate!</h3>
-                <button mat-flat-button (click)="newGame()" class="ng-btn">Nuevo Juego</button>
-            </div>
-
-            <div class="game-board">
-                <main>
-                    <app-square *ngFor="let val of squares; let i = index" [value]="val" [disabled]="disable" (click)="makeMove(i)"></app-square>
-                </main>
-                <app-scoresheet></app-scoresheet>
+                <div class="game-board">
+                    <main>
+                        <app-square *ngFor="let val of squares; let i = index" [value]="val" [disabled]="disable" (click)="makeMove(i)"></app-square>
+                    </main>
+                    <app-scoresheet></app-scoresheet>
+                </div>
             </div>
         </div>
     </li>

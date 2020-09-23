@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JugadoresService, eGame } from '../../../servicios/venian/jugadores.service';
 import { ScoreSheet } from './scoresheet/scoresheet';
 import { Square } from './square/square';
 import { TatetiService } from './tateti.service';
@@ -20,7 +21,7 @@ export interface CuadradoGrilla {
     styleUrls: ['./tateti.component.scss']
 })
 export class TatetiComponent implements OnInit {
-
+    score: number
     squares: Square[];
     playerTurn: boolean;
     winner: string;
@@ -38,24 +39,28 @@ export class TatetiComponent implements OnInit {
         [0, 4, 8],
         [2, 4, 6],
     ];
+    isPlaying:boolean
 
     //* Injecting ScoreService
-    constructor(private scoreService: TatetiService) { }
+    constructor(private scoreService: TatetiService, private jugadores: JugadoresService) { }
 
     ngOnInit() {
-        //* Intializing the Game
-        this.newGame();
-        this.playerXwins = 0;
-        this.playerOwins = 0;
+        // // Intializing the Game
+        // this.newGame();
+        // this.playerXwins = 0;
+        // this.playerOwins = 0;
     }
 
     newGame() {
         //* Resetting Game
+        this.playerXwins = 0;
+        this.playerOwins = 0;
         this.squares = Array(9).fill(null);
         this.playerTurn = true;
         this.winner = null;
         this.isDraw = false;
         this.disable = false;
+        this.isPlaying = true
     }
 
     get playerMarker() {
@@ -63,27 +68,56 @@ export class TatetiComponent implements OnInit {
     }
 
     makeMove(index: number) {
-        //* Checks whether square is empty
-        if (this.squares[index] === null) {
-            //* Replaces empty square with playerMarker
-            this.squares.splice(index, 1, { player: this.playerMarker, win: false });
-            //* Switches turn
-            this.playerTurn = !this.playerTurn;
+        if (this.squares[index] == null) {
+            if (!this.winner) {
+                this.disable = true
+                //* Checks whether square is empty
+                if (this.squares[index] === null) {
+                    //* Replaces empty square with playerMarker
+                    this.squares.splice(index, 1, { player: this.playerMarker, win: false });
+                    //* Switches turn
+                    this.playerTurn = !this.playerTurn;
+                }
+                //* Check for Winner
+                this.winner = this.isWinner();
+                if (this.winner === "X") {
+                    this.playerXwins += 1;
+                } else if (this.winner === "O") {
+                    this.playerOwins += 1;
+                }
+                //* Check for Tie
+                this.isDraw = this.checkTie();
+
+                // this.scoreService.publish(
+                //     new ScoreSheet(this.playerXwins, this.playerOwins)
+                // );
+                if (!this.playerTurn && this.squares.some(scuare => scuare == null)) {
+                    setTimeout(() => {
+                        this.PCRandomMove();
+                    }, 500);
+                }
+                this.setScore()
+            } else {
+                this.disable = false
+            }
         }
-        //* Check for Winner
-        this.winner = this.isWinner();
-        if (this.winner === "X") {
-            this.playerXwins += 1;
-        } else if (this.winner === "O") {
-            this.playerOwins += 1;
-        }
-        //* Check for Tie
-        this.isDraw = this.checkTie();
-        this.scoreService.publish(
-            new ScoreSheet(this.playerXwins, this.playerOwins)
-        );
     }
 
+    setScore() {
+        if (this.isDraw) {
+            this.score = 50;
+        } else if (this.winner) {
+            if (this.playerXwins) {
+                this.score = 100;
+            } else {
+                this.score = 0;
+            }
+        }
+        if (this.isDraw || this.winner) {
+            this.isPlaying = false;
+            this.jugadores.setPlayerScore(eGame.tateti, this.score)
+        }
+    }
     valueAtSquare(square: Square): string {
         //* Returns playerMarker at specified square
         return square && square.player;
@@ -125,5 +159,19 @@ export class TatetiComponent implements OnInit {
         ) {
             return true;
         }
+    }
+
+
+    private PCRandomMove(): void {
+        console.log("----onPCRandomMove----")
+        this.makeMove(this.getRandomIndex())
+        this.disable = false
+    }
+    private getRandomIndex(): number {
+        let index = Math.floor(Math.random() * this.squares.length)
+        if (this.squares[index] != null) {
+            index = this.getRandomIndex()
+        }
+        return index
     }
 }

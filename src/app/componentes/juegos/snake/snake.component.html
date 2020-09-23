@@ -3,15 +3,11 @@
 <br>
 <ul class="list-group text-center">
     <li class="list-group-item ">
-
-        <button mat-raised-button color="secondary" (click)="perderTestSnake()">perder snake</button>
-        <button mat-raised-button color="secondary" (click)="perderTestAritmetica()">perder aritmetica</button>
-        <button mat-raised-button color="secondary" (click)="perderTestPPT()">perder ppt</button>
-        <button mat-raised-button color="secondary" *ngIf="!isPaying" (click)="onPlay()">Jugar</button>
         <div class="game-over" *ngIf="!isPaying && score">
             <h2>Game over</h2>
             <h1>Puntaje {{score}}</h1>
         </div>
+        <button mat-raised-button color="secondary" *ngIf="!isPaying" (click)="onPlay()">Jugar</button>
         <app-stage (score)="onGameOver($event)" *ngIf="isPaying"></app-stage>
     </li>
 </ul>
