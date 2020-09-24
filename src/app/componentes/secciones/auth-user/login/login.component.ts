@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AnimateGallery } from '../../../../clases/animations.component';
 import { eAuthEstado, iAuthError } from '../../../../clases/firebase.model';
 import { FbAuthService } from '../../../../servicios/fb-auth.service';
 
@@ -7,10 +9,11 @@ import { FbAuthService } from '../../../../servicios/fb-auth.service';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+    styleUrls: ['./login.component.scss'],
+    animations: [AnimateGallery]
 })
 export class LoginComponent implements OnInit {
-    constructor(private fbauthservice: FbAuthService, private router: Router) { }
+    constructor(private fbauthservice: FbAuthService, private router: Router, private _snackBar: MatSnackBar) { }
     usuario: string;
     clave: string;
     invalidUsuario: boolean
@@ -18,13 +21,18 @@ export class LoginComponent implements OnInit {
     errorMensaje: string
     rememberMe: boolean = true
 
+    // recuperar: boolean
+
     ngOnInit() {
         if (window.localStorage.getItem("user")) {
             this.usuario = JSON.parse(window.localStorage.getItem("user"));
             this.clave = JSON.parse(window.localStorage.getItem("pass"));
         }
     }
-
+    onGuest() {
+        this.usuario = "guest@gmail.com"
+        this.clave = "123456"
+    }
     onLogin() {
         this.errorMensaje = ""
         this.invalidUsuario = false
@@ -55,4 +63,26 @@ export class LoginComponent implements OnInit {
             }
         }
     }
+    onRecover() {
+        this.fbauthservice.recoverPass(this.usuario)
+        this._snackBar.open("Se envio el mail de recuperio a " + this.usuario, "ok", {
+            duration: 2000,
+        });
+        // this.recuperar = false;
+        this.backFromRecover()
+    }
+
+    state: string
+    state2: string
+    goToRecover() {
+        // this.recuperar = true
+        this.state = "slideOutLeft"
+        this.state2 = "slideInRight"
+    }
+    backFromRecover() {
+        // this.recuperar = false
+        this.state = "slideInLeft"
+        this.state2 = "slideOutRight"
+    }
+
 }

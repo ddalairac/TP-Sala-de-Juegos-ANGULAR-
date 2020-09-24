@@ -6,7 +6,7 @@ import { iAuthError, eAuthEstado } from '../clases/firebase.model';
 import { LoaderService } from './loader.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class FbAuthService {
 
@@ -18,15 +18,38 @@ export class FbAuthService {
     ) { }
 
     private user: string
+    private userData: string
     private UserCredential: firebase.auth.UserCredential
 
     isLogged$ = new Subject<boolean>();
-    // isIn() {
-    //     this.isLogged$.next(true);
-    // }
-    // isOut() {
-    //     this.isLogged$.next(false);
-    // }
+
+    checkUserData() {
+        let userData
+        this.fireAuth.currentUser.then(data => {
+            userData = data
+            console.log("userData",userData)
+        })
+        // name, email, photoUrl, uid, emailVerified;
+
+        // if (user != null) {
+        //   name = user.displayName;
+        //   email = user.email;
+        //   photoUrl = user.photoURL;
+        //   emailVerified = user.emailVerified;
+        //   uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+        //                    // this value to authenticate with your backend server, if
+        //                    // you have one. Use User.getToken() instead.
+        // }
+    }
+    recoverPass(email){
+        this.fireAuth.sendPasswordResetEmail(email).then(function() {
+            console.log("Recover Email sent")
+            // Email sent.
+          }).catch(function(error) {
+              console.log("Recover Email error",error)
+            // An error happened.
+          });
+    }
 
     public async register(usuario, clave, rememberMe) {
         this.loader.show();
@@ -55,6 +78,7 @@ export class FbAuthService {
                     await this.persistAuthInData(res, usuario, clave, rememberMe, "login");
                     this.isLogged$.next(true);
                     this.loader.hide();
+                    this.checkUserData()
                     resolve(res)
                 }).catch(
                     (error: iAuthError) => {

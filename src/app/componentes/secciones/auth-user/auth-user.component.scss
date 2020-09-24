@@ -1,16 +1,13 @@
-:host{
+@import "src/assets/scss/variables";
+:host {
     background-image: url(/assets/imagenes/mat/pink-retro-city-lamborghini-hi-2880x1800.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    align-items:center;
+    align-items: center;
 
-    flex-grow:2;
-}
-.card.page{
-    top: 0;
-    padding: 20px 220px 20px 30px;
+    flex-grow: 2;
 }
 
 .character {
@@ -19,7 +16,17 @@
     top: auto;
     bottom: 20px;
     z-index: 10;
-    img{
+    img {
         width: 190px;
+    }
+}
+.card.page {
+    top: 0;
+    padding: 20px 220px 20px 30px;
+}
+
+@media screen and (max-width: $tablet-min-w) {
+    .card.page {
+        padding: 20px 30px;
     }
 }
