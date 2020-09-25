@@ -19,7 +19,7 @@ export class ListadoDeResultadosComponent implements OnInit {
   }
 
   ver() {
-    console.info(this.listado);
+    // console.info(this.listado);
   }
 
 }

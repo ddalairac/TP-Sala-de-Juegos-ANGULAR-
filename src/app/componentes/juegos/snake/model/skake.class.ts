@@ -3,7 +3,7 @@ import { extend } from "webdriver-js-extender";
 
 export class SnakeModel {
   constructor(x: number, y: number, color?: string) {
-    // console.log("new snake link", x, y);
+    // // console.log("new snake link", x, y);
     this.x = x;
     this.y = y;
 

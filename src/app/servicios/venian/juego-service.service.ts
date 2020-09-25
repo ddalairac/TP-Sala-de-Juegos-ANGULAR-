@@ -15,19 +15,19 @@
 //   public listar(): Array<Juego> {
 //    this.miHttp.httpGetP("https://restcountries.eu/rest/v2/all")
 //     .then( data => {
-//       console.log( data );
+//       // console.log( data );
 //     })
 //     .catch( err => {
-//       console.log( err );
+//       // console.log( err );
 //     });
    
   
 //     this.peticion
 //     .subscribe( data => {
-//       console.log("En listar");
-//       console.log( data );
+//       // console.log("En listar");
+//       // console.log( data );
 //     }, err => {
-//       console.info("error: " ,err );
+//       // console.info("error: " ,err );
 //     })
 
 //     let miArray: Array<Juego> = new Array<Juego>();
@@ -44,10 +44,10 @@
 //   public listarPromesa(): Promise<Array<Juego>> {
 //     this.peticion
 //     .subscribe( data => {
-//       console.log("En listarPromesa");
-//       console.log( data );
+//       // console.log("En listarPromesa");
+//       // console.log( data );
 //     }, err => {
-//       console.log( err );
+//       // console.log( err );
 //     })
 //     let promesa: Promise<Array<Juego>> = new Promise((resolve, reject) => {
 //       let miArray: Array<Juego> = new Array<Juego>();

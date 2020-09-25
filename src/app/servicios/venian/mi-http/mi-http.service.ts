@@ -25,7 +25,7 @@
 //         return this.http
 //             .get(url)
 //             .subscribe(data => {
-//                 console.log(data);
+//                 // console.log(data);
 //                 return data;
 //             });
 //     }

@@ -36,12 +36,12 @@ export class FbStorageService {
                     querySnapshot.forEach(doc => {
                         list.push(doc.data());
                     })
-                    console.log("Listado:", list);
+                    // console.log("Listado:", list);
                     this.loader.hide();
                     resolve( list)
                 },
                 error => {
-                    console.log("Error Listado:", error, list);
+                    // console.log("Error Listado:", error, list);
                     this.loader.hide();
                     reject( error);
                 }
@@ -50,7 +50,7 @@ export class FbStorageService {
        
         // pipe(
         //     tap((data) => {
-        //         console.log("readAll: ", data);
+        //         // console.log("readAll: ", data);
         //         this.loader.hide();
         //     }),
         //     catchError(this.handleError)
@@ -63,23 +63,23 @@ export class FbStorageService {
         return this.firestore.collection(collection).doc(id).get().toPromise()
             // .pipe(
             //     tap((data) => {
-            //         console.log("readOne: ", data);
+            //         // console.log("readOne: ", data);
             //         this.loader.hide();
             //     }),
             //     catchError(this.handleError)
             // )
             .then((doc)=> {
                 if (doc.exists) {
-                    console.log("Document data:", doc.data());
+                    // console.log("Document data:", doc.data());
                     return doc.data();
                 } else {
                     // doc.data() will be undefined in this case
-                    console.log("No such document!");
+                    // console.log("No such document!");
                     return false
                 }
                 this.loader.hide();
             }).catch((error)=> {
-                console.log("Error getting document:", error);
+                // console.log("Error getting document:", error);
                 this.loader.hide();
             });
     }
@@ -96,7 +96,7 @@ export class FbStorageService {
         return res;
     }
     private handleError(error: HttpErrorResponse): Observable<any> {
-        console.log("Error: ", error)
+        // console.log("Error: ", error)
         // let dataError: { number: number; message: string; friendlyMessage: string; }
 
         // if (error.status == 0) {

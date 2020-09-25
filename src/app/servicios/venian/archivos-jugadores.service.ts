@@ -15,11 +15,11 @@
 //         return this.miHttp.httpGetO(this.api + ruta)
 //             .toPromise()
 //             .then(data => {
-//                 console.log("Archivo jugadores");
-//                 // console.log( data );
+//                 // console.log("Archivo jugadores");
+//                 // // console.log( data );
 //                 return data;
 //             }, err => {
-//                 console.log(err);
+//                 // console.log(err);
 //             })
 //     }
 

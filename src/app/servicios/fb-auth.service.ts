@@ -27,7 +27,7 @@ export class FbAuthService {
         let userData
         this.fireAuth.currentUser.then(data => {
             userData = data
-            console.log("userData",userData)
+            // console.log("userData",userData)
         })
         // name, email, photoUrl, uid, emailVerified;
 
@@ -43,10 +43,10 @@ export class FbAuthService {
     }
     recoverPass(email){
         this.fireAuth.sendPasswordResetEmail(email).then(function() {
-            console.log("Recover Email sent")
+            // console.log("Recover Email sent")
             // Email sent.
           }).catch(function(error) {
-              console.log("Recover Email error",error)
+              // console.log("Recover Email error",error)
             // An error happened.
           });
     }
@@ -56,13 +56,13 @@ export class FbAuthService {
         return new Promise((resolve, reject) => {
             this.fireAuth.createUserWithEmailAndPassword(usuario, clave)
                 .then(async res => {
-                    console.log("registrar: ", { user: usuario, pass: clave })
+                    // console.log("registrar: ", { user: usuario, pass: clave })
                     await this.persistAuthInData(res, usuario, clave, rememberMe, "register");
                     this.isLogged$.next(true);
                     this.loader.hide();
                     resolve(res)
                 }).catch((error: iAuthError) => {
-                    console.log("Error Registro:", error)
+                    // console.log("Error Registro:", error)
                     this.loader.hide();
                     reject(error)
                 })
@@ -74,7 +74,7 @@ export class FbAuthService {
         return new Promise((resolve, reject) => {
             this.fireAuth.signInWithEmailAndPassword(usuario, clave).then(
                 async res => {
-                    console.log("Login:", res)
+                    // console.log("Login:", res)
                     await this.persistAuthInData(res, usuario, clave, rememberMe, "login");
                     this.isLogged$.next(true);
                     this.loader.hide();
@@ -82,7 +82,7 @@ export class FbAuthService {
                     resolve(res)
                 }).catch(
                     (error: iAuthError) => {
-                        console.log("Error Login:", error)
+                        // console.log("Error Login:", error)
                         this.loader.hide();
                         reject(error)
                     }

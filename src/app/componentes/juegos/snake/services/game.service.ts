@@ -178,7 +178,7 @@ export class GameService {
         this.snakeLinks[0].x == this.apples[i].x &&
         this.snakeLinks[0].y == this.apples[i].y
       ) {
-        // console.log("colition!");
+        // // console.log("colition!");
         colition = true;
         let lastIndex = this._snakeMovQueue.length - 1;
         this._snakeMovQueue.push(this._snakeMovQueue[lastIndex]);

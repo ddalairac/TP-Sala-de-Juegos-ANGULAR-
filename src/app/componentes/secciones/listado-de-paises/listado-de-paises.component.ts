@@ -16,7 +16,7 @@ export class ListadoDePaisesComponent implements OnInit {
     ngOnInit() {
     //     this.miServicioDePaises.listar()
     //         .then(datos => {
-    //             console.info("listado de paises", datos);
+    //             // console.info("listado de paises", datos);
     //             this.listadoDePaises = datos;
     //         });
     }

@@ -35,7 +35,7 @@ export class RegistroComponent implements OnInit {
                 .then(res => {
                     this.router.navigateByUrl('principal');
                 }).catch((error: iAuthError) => {
-                    console.log("Error Registro:", error)
+                    // console.log("Error Registro:", error)
                     this.errorMensaje = error.message
                 })
         } else {

@@ -19,7 +19,7 @@ export class InterceptorService implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // console.log("INTERCEPT request", request);
+    // // console.log("INTERCEPT request", request);
 
     this.loaderService.show();
     return next.handle(request).pipe(

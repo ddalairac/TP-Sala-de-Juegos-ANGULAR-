@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigateByUrl('principal');
                     // this.router.navigateByUrl('juegos');
                 }).catch((error: iAuthError) => {
-                    console.log("Error Login:", error)
+                    // console.log("Error Login:", error)
                     this.errorMensaje = error.message
                 })
 

@@ -46,7 +46,7 @@ export class AnagramaComponent implements OnInit {
         this.palabraSecreta = this.palabrasParaAdivinar[Math.floor(Math.random() * this.palabrasParaAdivinar.length + 1)];
 
         let arrayDeCaracteresOrdenados = [...this.palabraSecreta];
-        console.log("CaracteresOrdenados: ",arrayDeCaracteresOrdenados)
+        // console.log("CaracteresOrdenados: ",arrayDeCaracteresOrdenados)
 
         this.palabraSecretaMezclada = arrayDeCaracteresOrdenados
             .map((a) => ({ sort: Math.random(), value: a }))//Le agrego una key numerica aleatoria
@@ -62,10 +62,10 @@ export class AnagramaComponent implements OnInit {
         } else {
             this.mensajeAlUsuario = true;
             this.score = (this.score - 15 > 0) ? this.score - 15 : 0 
-            console.log("score",this.score)
+            // console.log("score",this.score)
             this.temporizador = setInterval(() => {//Comienza a correr el tiempo
                 this.tiempo--;
-                console.log("tiempo: ", this.tiempo);
+                // console.log("tiempo: ", this.tiempo);
                 if (this.tiempo == 0) {
                     clearInterval(this.temporizador);//Borro el contador
                     this.tiempo = 3;

@@ -31,7 +31,7 @@ export class AgilidadAritmeticaComponent implements OnInit {
         this.ocultarVerificar = true;
         this.tiempo = 5;
         this.nuevoJuego = new JuegoAgilidad();
-        console.info("Inicio agilidad");
+        // console.info("Inicio agilidad");
     }
 
     onNuevoJuego() {
@@ -43,7 +43,7 @@ export class AgilidadAritmeticaComponent implements OnInit {
         this.ocultarVerificar = false;
         this.temporizador = setInterval(() => {//Comienza a correr el tiempo
             this.tiempo--;
-            console.log("tiempo: ", this.tiempo);
+            // console.log("tiempo: ", this.tiempo);
             if (this.tiempo == 0) {//Si llega a 0 verifico
                 this.verificar(); //Verifico si lo q estaba puesto por el user estaba ok
             }
@@ -97,6 +97,6 @@ export class AgilidadAritmeticaComponent implements OnInit {
                 break;
         }
 
-        console.log(this.operacionRandomAritmeticaRealizada);
+        // console.log(this.operacionRandomAritmeticaRealizada);
     }
 }

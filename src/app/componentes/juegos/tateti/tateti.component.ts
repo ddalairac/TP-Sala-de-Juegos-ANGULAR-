@@ -96,7 +96,7 @@ export class TatetiComponent implements OnInit {
                 this.score = 0;
             }
         }
-        console.log(this.isDraw , this.winner)
+        // console.log(this.isDraw , this.winner)
         if (this.isDraw || this.winner) {
             this.isPlaying = false;
             this.jugadores.setPlayerScore(eGame.tateti, this.score)
@@ -147,7 +147,7 @@ export class TatetiComponent implements OnInit {
 
 
     private PCRandomMove(): void {
-        console.log("----onPCRandomMove----")
+        // console.log("----onPCRandomMove----")
         this.makeMove(this.getRandomIndex())
         this.disable = false
     }

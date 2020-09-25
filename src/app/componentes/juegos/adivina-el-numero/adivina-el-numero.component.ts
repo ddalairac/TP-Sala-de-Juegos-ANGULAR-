@@ -20,7 +20,7 @@ export class AdivinaElNumeroComponent implements OnInit {
 
     constructor(private jugadores: JugadoresService) {
         this.nuevoJuego = new JuegoAdivina();
-        console.info("numero Secreto:", this.nuevoJuego.numeroSecreto);
+        // console.info("numero Secreto:", this.nuevoJuego.numeroSecreto);
         this.ocultarVerificar = false;
     }
     generarnumero() {
@@ -31,7 +31,7 @@ export class AdivinaElNumeroComponent implements OnInit {
     verificar() {
         this.contador++;
         this.ocultarVerificar = true;
-        console.info("numero Secreto:", this.nuevoJuego.gano);
+        // console.info("numero Secreto:", this.nuevoJuego.gano);
         if (this.nuevoJuego.verificar()) {
 
             this.enviarJuego.emit(this.nuevoJuego);
@@ -72,12 +72,12 @@ export class AdivinaElNumeroComponent implements OnInit {
 
 
         }
-        console.info("numero Secreto:", this.nuevoJuego.gano);
+        // console.info("numero Secreto:", this.nuevoJuego.gano);
     }
 
     MostrarMensaje(mensaje: string, ganador: boolean = false) {
         this.Mensajes = mensaje;
-        console.log("contador:", this.contador)
+        // console.log("contador:", this.contador)
         if (ganador) {
             this.mensajeClass = 'bg-success';
         } else {

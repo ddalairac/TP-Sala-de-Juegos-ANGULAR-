@@ -20,13 +20,13 @@ export class JugadoresService {
         //         this.list = data
         //     },
         //     error => {
-        //         console.log("Error List comp: ", error)
+        //         // console.log("Error List comp: ", error)
         //     }
         // )
     }
     public setPlayerScore(game: eGame, score: number) {
         let user = this.fbauthgeservice.getUserId()
-        console.log("setPlayerScore:",{ user: user, game: game, score: score })
+        // console.log("setPlayerScore:",{ user: user, game: game, score: score })
         let UserScores: PlayerScore
         this.fbstorageservice.readOne(eCollections.scores, user).then(
             (data: PlayerScore) => {
@@ -36,7 +36,7 @@ export class JugadoresService {
                     UserScores = new PlayerScore(user);
                 }
                 UserScores[game] = score
-                console.log("createFromUserId UserScores:", UserScores)
+                // console.log("createFromUserId UserScores:", UserScores)
                 this.fbstorageservice.createFromUserId(eCollections.scores, user, UserScores);
             })
     }

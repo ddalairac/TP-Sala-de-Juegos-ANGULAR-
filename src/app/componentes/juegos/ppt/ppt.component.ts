@@ -25,11 +25,11 @@ export class PptComponent implements OnInit {
 
     userPick(eleccionUsuario: ePpt): void {
         this.eleccionUsuario = eleccionUsuario;
-        console.log(this.eleccionUsuario);
+        // console.log(this.eleccionUsuario);
         setTimeout(() => {
             const indiceRandom = Math.floor(Math.random() * 3);
             this.eleccionPC = this.opciones[indiceRandom];
-            console.log(this.eleccionPC);
+            // console.log(this.eleccionPC);
             this.checkResult();
         }, 1000);
     }

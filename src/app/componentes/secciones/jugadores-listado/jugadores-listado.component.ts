@@ -24,7 +24,7 @@ export class JugadoresListadoComponent implements OnInit {
         this.fbsorageservice.readAll(eCollections.scores).then(
             (data) => {
                 this.dataSource = data
-                console.log("Jugadores:", this.dataSource)
+                // console.log("Jugadores:", this.dataSource)
             }
         )
     }
@@ -54,21 +54,21 @@ export class JugadoresListadoComponent implements OnInit {
     // TraerTodos() {
     //     //alert("totos");
     //     this.miJugadoresServicio.traertodos('jugadores/', 'todos').then(data => {
-    //         //console.info("jugadores listado",(data));
+    //         //// console.info("jugadores listado",(data));
     //         this.listado = data;
 
     //     })
     // }
     // TraerGanadores() {
     //     this.miJugadoresServicio.traertodos('jugadores/', 'ganadores').then(data => {
-    //         //console.info("jugadores listado",(data));
+    //         //// console.info("jugadores listado",(data));
     //         this.listado = data;
 
     //     })
     // }
     // TraerPerdedores() {
     //     this.miJugadoresServicio.traertodos('jugadores/', 'perdedores').then(data => {
-    //         //console.info("jugadores listado",(data));
+    //         //// console.info("jugadores listado",(data));
     //         this.listado = data;
 
     //     })

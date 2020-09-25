@@ -20,7 +20,7 @@ export class JuegoAdivina extends Juego {
     }
     public generarnumero() {
         this.numeroSecreto = Math.floor((Math.random() * 100) + 1);
-        console.info('numero Secreto:' + this.numeroSecreto);
+        // console.info('numero Secreto:' + this.numeroSecreto);
         this.gano = false;
     }
     public retornarAyuda() {
