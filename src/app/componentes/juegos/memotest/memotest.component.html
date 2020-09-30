@@ -1,0 +1,26 @@
+<app-go-back title="Memotest"></app-go-back>
+<ul class="list-group text-center">
+    <li class="list-group-item ">
+        
+        <button type="button" mat-raised-button color="secondary" (click)="onNewGame()" *ngIf="!dirty">Jugar</button>
+
+        <div class="game-over" *ngIf="gameOver">
+            <h2>Game over</h2>
+            <h3>Ganaste</h3>
+            <h1>Puntaje {{score}}</h1>
+            <button type="button" mat-raised-button color="secondary" (click)="onNewGame()">Jugar de nuevo</button>
+        </div>
+
+        <div class="board"  *ngIf="!gameOver">
+            <div class="card-item " *ngFor="let item of cardsObjValues"  [class.flip]="item.flip || item.isCorrect" (click)="onClick(item)">
+                <div class="card-inner">
+                    <div class="front">
+                        <!-- <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;"> -->
+                    </div>
+                    <div class="back">{{item.letter}}</div>
+                </div>
+            </div>
+        </div>
+
+    </li>
+</ul>

@@ -52,7 +52,8 @@ export class PlayerScore {
         ppt: number = 0,
         adivina_numero: number = 0,
         tateti: number = 0,
-        anagrama: number = 0) {
+        anagrama: number = 0,
+        memotest: number = 0) {
         this.user = user
         this.snake = snake;
         this.aritmetica = aritmetica;
@@ -60,6 +61,7 @@ export class PlayerScore {
         this.adivina_numero = adivina_numero;
         this.tateti = tateti;
         this.anagrama = anagrama;
+        this.memotest = memotest;
     }
     user: string;
     snake: number;
@@ -68,6 +70,7 @@ export class PlayerScore {
     adivina_numero: number;
     tateti: number;
     anagrama: number;
+    memotest: number;
 }
 export enum eGame {
     snake = "snake",
@@ -75,5 +78,6 @@ export enum eGame {
     ppt = "ppt",
     adivina_numero = "adivina_numero",
     tateti = "tateti",
-    anagrama = "anagrama"
+    anagrama = "anagrama",
+    memotest = "memotest"
 }

@@ -18,7 +18,7 @@ export class JugadoresListadoComponent implements OnInit {
     ) { }
     dataSource: PlayerScore[] = []
 
-    displayedColumns: string[] = ["user", "snake", "aritmetica", "ppt", "adivina_numero", "tateti", "anagrama"];
+    displayedColumns: string[] = ["user", "snake", "aritmetica", "ppt", "adivina_numero", "tateti", "anagrama", "memotest"];
 
     public getPlayers() {
         this.fbsorageservice.readAll(eCollections.scores).then(

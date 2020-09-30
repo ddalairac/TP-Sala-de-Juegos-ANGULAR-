@@ -2,13 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { AgmCoreModule } from '@agm/core';
-//  import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { HttpModule } from '@angular/http';
-
-// import { AccordionModule } from 'ngx-bootstrap';
-
-
+// import { AgmCoreModule } from '@agm/core';
 
 import { AuthUserComponent } from './componentes/secciones/auth-user/auth-user.component';
 import { RegistroComponent } from './componentes/secciones/auth-user/registro/registro.component';
@@ -37,6 +31,7 @@ import { PptComponent } from './componentes/juegos/ppt/ppt.component';
 import { TatetiComponent } from './componentes/juegos/tateti/tateti.component';
 import { SquareComponent } from './componentes/juegos/tateti/square/square.component';
 import { ScoresheetComponent } from './componentes/juegos/tateti/scoresheet/scoresheet.component';
+import { MemotestComponent } from './componentes/juegos/memotest/memotest.component';
 
 import { MenuComponent } from './componentes/comp/menu/menu.component';
 import { GoBackComponent } from './componentes/comp/go-back/go-back.component';
@@ -52,20 +47,12 @@ import { SexoPipe } from './pipes/sexo.pipe';
 import { MaterialModule } from './vendors/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// import { config } from 'process';
-// import { AngularFireModule } from '@angular/fire/firebase.app.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
-// import { ArchivosJugadoresService } from './servicios/venian/archivos-jugadores.service';
-// import { JuegoServiceService } from './servicios/venian/juego-service.service';
 import { JugadoresService } from './servicios/venian/jugadores.service';
-import { MiHttpService } from './servicios/venian/mi-http.service';
-import { PaisesService } from './servicios/venian/paises.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { InterceptorService } from './servicios/interceptor.service';
 
 @NgModule({
     declarations: [
@@ -103,31 +90,24 @@ import { InterceptorService } from './servicios/interceptor.service';
         ScoresheetComponent,
         GoBackComponent,
         LoaderComponent,
-        AuthUserComponent
+        AuthUserComponent,
+        MemotestComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         RuteandoModule,
-        HttpModule,
-        AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyB6f8x4IjRlesQ3oETc6BXYQHVRTOlY3Ys'
-        }),
+        // AgmCoreModule.forRoot({
+        //     apiKey: 'AIzaSyB6f8x4IjRlesQ3oETc6BXYQHVRTOlY3Ys'
+        // }),
         BrowserAnimationsModule,
         MaterialModule,
-        // AngularFireModule.initializeApp(config),
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFirestoreModule, // firestore
         AngularFireAuthModule, // auth
         AngularFireStorageModule // storage
     ],
-    providers: [ MiHttpService, PaisesService,  JugadoresService,
-        // ArchivosJugadoresService,JuegoServiceService,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: InterceptorService,
-            multi: true //  multi: true option provided tells Angular that you are providing multiple interceptors
-        }],
+    providers: [ JugadoresService ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
